@@ -7,7 +7,9 @@ import Hero from '../components/Hero';
 import FeaturedCollection from '../components/FeaturedCollection';
 import Editorial from '../components/Editorial';
 import About from '../components/About';
+import FeaturedCollectionDark from '../components/sections/FeaturedCollection';
 import Footer from '../components/Footer';
+import ProductCatalogueSection from '../components/product-catalogue';
 
 export default function Home() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -47,9 +49,11 @@ export default function Home() {
     <main className={styles.main}>
       <Navbar />
       <Hero trackRef={trackRef} scrollProgress={scrollProgress} />
+      <ProductCatalogueSection />
       <FeaturedCollection products={featuredProducts} />
       <Editorial />
       <About />
+      <FeaturedCollectionDark />
       <Footer />
     </main>
   );

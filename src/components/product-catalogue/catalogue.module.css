@@ -1,0 +1,346 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 35% 65%;
+  background-color: #f8f6f2; /* default warm paper */
+  transition: background-color 1.2s ease-in-out;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+  }
+}
+
+/* ========================================
+   LEFT PANEL — PRODUCT DETAILS (35%)
+   ======================================== */
+
+.leftPanel {
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.sectionLabel {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #1a1a18;
+}
+
+.categoryBadge {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background-color: #1a1a18;
+}
+
+.productNameBlock {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.productName {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(40px, 4vw, 56px);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: #1a1a18;
+  margin: 0;
+}
+
+.newBadge {
+  position: absolute;
+  top: -10px;
+  right: -20px;
+  background-color: #1a1a18;
+  color: #fff;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  padding: 4px 8px;
+  border-radius: 2px;
+}
+
+.tagline {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  opacity: 0.6;
+  margin-bottom: 1.5rem;
+  color: #1a1a18;
+}
+
+.divider {
+  width: 48px;
+  height: 1px;
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
+  opacity: 0.7;
+  color: #1a1a18;
+  margin-bottom: 2rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.materialColorRow {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #6b6860;
+  margin-bottom: 3rem;
+}
+
+.price {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #1a1a18;
+  margin-bottom: 2rem;
+}
+
+.ctaRow {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: auto;
+}
+
+.ctaBag {
+  background-color: #1a1a18;
+  color: #f8f6f2;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 14px 24px;
+  border: none;
+  cursor: pointer;
+  flex: 1;
+}
+
+.ctaWishlist {
+  background-color: transparent;
+  color: #1a1a18;
+  border: 1px solid #1a1a18;
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.heartIcon {
+  font-size: 16px;
+}
+
+.bottomMeta {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #a09d98;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 1.5rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.socialLinks a {
+  color: #1a1a18;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.socialLinks a:hover {
+  opacity: 0.5;
+}
+
+@media (max-width: 1024px) {
+  .leftPanel {
+    padding: 2rem 1.5rem;
+    order: 2;
+  }
+}
+
+/* ========================================
+   RIGHT PANEL — IMAGE SLIDER (65%)
+   ======================================== */
+
+.rightPanel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 4rem 4rem 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sliderContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+}
+
+.sliderImageWrapper {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 24px 48px rgba(26, 26, 24, 0.12);
+  cursor: pointer;
+  will-change: transform, left, width, height, opacity;
+}
+
+.sliderImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.bestsellerBadge {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  color: #fff;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  padding: 6px 12px;
+  border-radius: 2px;
+  z-index: 10;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1024px) {
+  .rightPanel {
+    padding: 2rem 1.5rem 0 1.5rem;
+    height: 60vh;
+    order: 1;
+  }
+}
+
+/* ========================================
+   PROGRESS BAR & CONTROLS
+   ======================================== */
+
+.progressRow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4rem;
+  z-index: 20;
+}
+
+.progressContainer {
+  flex: 1;
+  height: 2px;
+  background-color: rgba(26, 26, 24, 0.1);
+  margin: 0 2rem;
+  position: relative;
+}
+
+.progressFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #1a1a18;
+}
+
+.navBtn {
+  background: transparent;
+  border: none;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #1a1a18;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navBtn:hover {
+  opacity: 0.7;
+}
+
+/* ========================================
+   COUNTER
+   ======================================== */
+
+.counter {
+  position: absolute;
+  top: 4rem;
+  right: 4rem;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  color: #1a1a18;
+  z-index: 20;
+}
+
+.counterTotal {
+  opacity: 0.5;
+}
+
+@media (max-width: 1024px) {
+  .counter {
+    top: 1.5rem;
+    right: 1.5rem;
+  }
+  .progressRow {
+    padding: 0 1.5rem;
+  }
+}

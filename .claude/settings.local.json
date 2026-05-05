@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(uipro init *)",
+      "PowerShell(uipro *)",
+      "Bash(command -v python3)",
+      "Bash(command -v python)",
+      "PowerShell(npm install *)",
+      "Bash(dir C:UsersmohitDropboxPCDesktopDaur *)",
+      "Bash(node .claude/skills/impeccable/scripts/load-context.mjs)",
+      "Bash(npm run *)",
+      "PowerShell(python .graphify_query_tmp.py)"
+    ]
+  }
+}

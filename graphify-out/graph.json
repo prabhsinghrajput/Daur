@@ -1,0 +1,316 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "eslint.config.mjs",
+      "file_type": "code",
+      "source_file": "eslint.config.mjs",
+      "source_location": "L1",
+      "id": "eslint_config_mjs",
+      "community": 7,
+      "norm_label": "eslint.config.mjs"
+    },
+    {
+      "label": "next-env.d.ts",
+      "file_type": "code",
+      "source_file": "next-env.d.ts",
+      "source_location": "L1",
+      "id": "next_env_d_ts",
+      "community": 8,
+      "norm_label": "next-env.d.ts"
+    },
+    {
+      "label": "next.config.ts",
+      "file_type": "code",
+      "source_file": "next.config.ts",
+      "source_location": "L1",
+      "id": "next_config_ts",
+      "community": 9,
+      "norm_label": "next.config.ts"
+    },
+    {
+      "label": "layout.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\layout.tsx",
+      "source_location": "L1",
+      "id": "src_app_layout_tsx",
+      "community": 1,
+      "norm_label": "layout.tsx"
+    },
+    {
+      "label": "RootLayout()",
+      "file_type": "code",
+      "source_file": "src\\app\\layout.tsx",
+      "source_location": "L9",
+      "id": "app_layout_rootlayout",
+      "community": 1,
+      "norm_label": "rootlayout()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_page_tsx",
+      "community": 2,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "Home()",
+      "file_type": "code",
+      "source_file": "src\\app\\page.tsx",
+      "source_location": "L13",
+      "id": "app_page_home",
+      "community": 2,
+      "norm_label": "home()"
+    },
+    {
+      "label": "About.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\About.tsx",
+      "source_location": "L1",
+      "id": "src_components_about_tsx",
+      "community": 3,
+      "norm_label": "about.tsx"
+    },
+    {
+      "label": "About()",
+      "file_type": "code",
+      "source_file": "src\\components\\About.tsx",
+      "source_location": "L3",
+      "id": "components_about_about",
+      "community": 3,
+      "norm_label": "about()"
+    },
+    {
+      "label": "Editorial.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\Editorial.tsx",
+      "source_location": "L1",
+      "id": "src_components_editorial_tsx",
+      "community": 4,
+      "norm_label": "editorial.tsx"
+    },
+    {
+      "label": "Editorial()",
+      "file_type": "code",
+      "source_file": "src\\components\\Editorial.tsx",
+      "source_location": "L3",
+      "id": "components_editorial_editorial",
+      "community": 4,
+      "norm_label": "editorial()"
+    },
+    {
+      "label": "FeaturedCollection.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\FeaturedCollection.tsx",
+      "source_location": "L1",
+      "id": "src_components_featuredcollection_tsx",
+      "community": 10,
+      "norm_label": "featuredcollection.tsx"
+    },
+    {
+      "label": "Footer.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\Footer.tsx",
+      "source_location": "L1",
+      "id": "src_components_footer_tsx",
+      "community": 11,
+      "norm_label": "footer.tsx"
+    },
+    {
+      "label": "Hero.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\Hero.tsx",
+      "source_location": "L1",
+      "id": "src_components_hero_tsx",
+      "community": 5,
+      "norm_label": "hero.tsx"
+    },
+    {
+      "label": "Hero()",
+      "file_type": "code",
+      "source_file": "src\\components\\Hero.tsx",
+      "source_location": "L9",
+      "id": "components_hero_hero",
+      "community": 5,
+      "norm_label": "hero()"
+    },
+    {
+      "label": "Hero3D.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\Hero3D.tsx",
+      "source_location": "L1",
+      "id": "src_components_hero3d_tsx",
+      "community": 12,
+      "norm_label": "hero3d.tsx"
+    },
+    {
+      "label": "Navbar.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\Navbar.tsx",
+      "source_location": "L1",
+      "id": "src_components_navbar_tsx",
+      "community": 6,
+      "norm_label": "navbar.tsx"
+    },
+    {
+      "label": "Navbar()",
+      "file_type": "code",
+      "source_file": "src\\components\\Navbar.tsx",
+      "source_location": "L3",
+      "id": "components_navbar_navbar",
+      "community": 6,
+      "norm_label": "navbar()"
+    },
+    {
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\sections\\FeaturedCollection\\index.tsx",
+      "source_location": "L1",
+      "id": "src_components_sections_featuredcollection_index_tsx",
+      "community": 0,
+      "norm_label": "index.tsx"
+    },
+    {
+      "label": "Card()",
+      "file_type": "code",
+      "source_file": "src\\components\\sections\\FeaturedCollection\\index.tsx",
+      "source_location": "L90",
+      "id": "featuredcollection_index_card",
+      "community": 0,
+      "norm_label": "card()"
+    },
+    {
+      "label": "useCollectionHover.ts",
+      "file_type": "code",
+      "source_file": "src\\components\\sections\\FeaturedCollection\\hooks\\useCollectionHover.ts",
+      "source_location": "L1",
+      "id": "src_components_sections_featuredcollection_hooks_usecollectionhover_ts",
+      "community": 0,
+      "norm_label": "usecollectionhover.ts"
+    },
+    {
+      "label": "useCollectionHover()",
+      "file_type": "code",
+      "source_file": "src\\components\\sections\\FeaturedCollection\\hooks\\useCollectionHover.ts",
+      "source_location": "L12",
+      "id": "hooks_usecollectionhover_usecollectionhover",
+      "community": 0,
+      "norm_label": "usecollectionhover()"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\layout.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "src_app_layout_tsx",
+      "_tgt": "app_layout_rootlayout",
+      "source": "src_app_layout_tsx",
+      "target": "app_layout_rootlayout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\page.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "src_app_page_tsx",
+      "_tgt": "app_page_home",
+      "source": "src_app_page_tsx",
+      "target": "app_page_home",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\About.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "src_components_about_tsx",
+      "_tgt": "components_about_about",
+      "source": "src_components_about_tsx",
+      "target": "components_about_about",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Editorial.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "src_components_editorial_tsx",
+      "_tgt": "components_editorial_editorial",
+      "source": "src_components_editorial_tsx",
+      "target": "components_editorial_editorial",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Hero.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "src_components_hero_tsx",
+      "_tgt": "components_hero_hero",
+      "source": "src_components_hero_tsx",
+      "target": "components_hero_hero",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Navbar.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "src_components_navbar_tsx",
+      "_tgt": "components_navbar_navbar",
+      "source": "src_components_navbar_tsx",
+      "target": "components_navbar_navbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\sections\\FeaturedCollection\\index.tsx",
+      "source_location": "L90",
+      "weight": 1.0,
+      "_src": "src_components_sections_featuredcollection_index_tsx",
+      "_tgt": "featuredcollection_index_card",
+      "source": "src_components_sections_featuredcollection_index_tsx",
+      "target": "featuredcollection_index_card",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src\\components\\sections\\FeaturedCollection\\index.tsx",
+      "source_location": "L94",
+      "weight": 1.0,
+      "_src": "featuredcollection_index_card",
+      "_tgt": "hooks_usecollectionhover_usecollectionhover",
+      "source": "featuredcollection_index_card",
+      "target": "hooks_usecollectionhover_usecollectionhover"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\sections\\FeaturedCollection\\hooks\\useCollectionHover.ts",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_src": "src_components_sections_featuredcollection_hooks_usecollectionhover_ts",
+      "_tgt": "hooks_usecollectionhover_usecollectionhover",
+      "source": "src_components_sections_featuredcollection_hooks_usecollectionhover_ts",
+      "target": "hooks_usecollectionhover_usecollectionhover",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": []
+}

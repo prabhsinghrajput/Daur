@@ -1,0 +1,331 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-02T00:00:00Z",
+  "title": "Design System: DAUR",
+  "extensions": {
+    "colorMeta": {
+      "atelier-cream": {
+        "role": "primary",
+        "displayName": "Atelier Cream",
+        "canonical": "oklch(0.978 0.005 68)",
+        "approxHex": "#f9f9f9",
+        "tonalRamp": [
+          "oklch(0.15 0.005 68)",
+          "oklch(0.27 0.005 68)",
+          "oklch(0.39 0.005 68)",
+          "oklch(0.50 0.005 68)",
+          "oklch(0.62 0.005 68)",
+          "oklch(0.74 0.005 68)",
+          "oklch(0.85 0.005 68)",
+          "oklch(0.978 0.005 68)"
+        ]
+      },
+      "plinth-black": {
+        "role": "primary",
+        "displayName": "Plinth Black",
+        "canonical": "oklch(0.205 0.005 68)",
+        "approxHex": "#1a1a1a",
+        "tonalRamp": [
+          "oklch(0.10 0.005 68)",
+          "oklch(0.205 0.005 68)",
+          "oklch(0.30 0.005 68)",
+          "oklch(0.42 0.005 68)",
+          "oklch(0.55 0.005 68)",
+          "oklch(0.68 0.005 68)",
+          "oklch(0.82 0.005 68)",
+          "oklch(0.95 0.005 68)"
+        ]
+      },
+      "smoked-pewter": {
+        "role": "neutral",
+        "displayName": "Smoked Pewter",
+        "canonical": "oklch(0.543 0.005 68)",
+        "approxHex": "#7a7a7a",
+        "tonalRamp": [
+          "oklch(0.15 0.005 68)",
+          "oklch(0.27 0.005 68)",
+          "oklch(0.39 0.005 68)",
+          "oklch(0.50 0.005 68)",
+          "oklch(0.62 0.005 68)",
+          "oklch(0.74 0.005 68)",
+          "oklch(0.85 0.005 68)",
+          "oklch(0.95 0.005 68)"
+        ]
+      },
+      "atelier-chalk": {
+        "role": "neutral",
+        "displayName": "Atelier Chalk",
+        "canonical": "oklch(0.892 0.005 68)",
+        "approxHex": "#e0e0e0",
+        "tonalRamp": [
+          "oklch(0.15 0.005 68)",
+          "oklch(0.27 0.005 68)",
+          "oklch(0.39 0.005 68)",
+          "oklch(0.50 0.005 68)",
+          "oklch(0.62 0.005 68)",
+          "oklch(0.74 0.005 68)",
+          "oklch(0.85 0.005 68)",
+          "oklch(0.95 0.005 68)"
+        ]
+      },
+      "after-hours-dark": {
+        "role": "tertiary",
+        "displayName": "After Hours Dark",
+        "canonical": "oklch(0.135 0.005 68)",
+        "approxHex": "#0A0A0B",
+        "tonalRamp": [
+          "oklch(0.08 0.005 68)",
+          "oklch(0.135 0.005 68)",
+          "oklch(0.20 0.005 68)",
+          "oklch(0.30 0.005 68)",
+          "oklch(0.42 0.005 68)",
+          "oklch(0.55 0.005 68)",
+          "oklch(0.70 0.005 68)",
+          "oklch(0.88 0.005 68)"
+        ]
+      },
+      "brass-lamp": {
+        "role": "secondary",
+        "displayName": "Brass Lamp",
+        "canonical": "oklch(0.78 0.155 68)",
+        "approxHex": "#F59E0B",
+        "tonalRamp": [
+          "oklch(0.20 0.045 68)",
+          "oklch(0.32 0.080 68)",
+          "oklch(0.45 0.115 68)",
+          "oklch(0.58 0.140 68)",
+          "oklch(0.68 0.155 68)",
+          "oklch(0.78 0.155 68)",
+          "oklch(0.86 0.115 68)",
+          "oklch(0.95 0.055 68)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display-cream": {
+        "displayName": "Display (Cream)",
+        "purpose": "Hero brand wordmark — Bodoni Moda 900. One per page; never reused on section headers."
+      },
+      "display-dark": {
+        "displayName": "Display (After-Hours)",
+        "purpose": "Section openers inside dark sections — Playfair Display 600. Quieter than the hero by design."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Editorial titles in cream sections (Featured Collection, Editorial spread, About statement)."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Editorial paragraph copy. Capped at 65–75ch. Bodoni Moda 300."
+      },
+      "label-cream": {
+        "displayName": "Label (Cream)",
+        "purpose": "Section subtitles, product names, footer column titles, side numbers — Bodoni Moda 500."
+      },
+      "label-dark": {
+        "displayName": "Label (After-Hours)",
+        "purpose": "The only sans in the system — DM Sans 500. Card eyebrows, badges, microcopy in dark sections only."
+      }
+    },
+    "shadows": [
+      {
+        "name": "hero-extrusion",
+        "value": "1px 2px 0 #161616, 2px 4px 0 #151515, 3px 6px 0 #141414, 4px 8px 0 #131313, 5px 10px 0 #121212, 6px 12px 0 #111111, 7px 13px 0 #101010, 8px 14px 0 #0f0f0f, 9px 15px 0 #0e0e0e, 10px 16px 0 #0d0d0d, 11px 17px 0 #0c0c0c, 12px 18px 0 #0b0b0b, 13px 19px 0 #0a0a0a, 14px 20px 0 #0a0a0a, 15px 21px 0 #090909, 16px 22px 0 #090909, 17px 23px 0 #080808, 18px 24px 0 #080808, 19px 25px 0 #070707, 20px 26px 0 #070707, 22px 30px 18px rgba(0,0,0,0.55), 24px 34px 30px rgba(0,0,0,0.30)",
+        "purpose": "Architectural extrusion under the hero brand wordmark. Applied as text-shadow only. One-time effect; never reused. Current state ships pure-hex stops; canonical is OKLCH-tinted Plinth Black variants."
+      },
+      {
+        "name": "brass-focus-glow",
+        "value": "0 0 0 2px oklch(0.78 0.155 68), 0 8px 32px oklch(0.78 0.155 68 / 0.25)",
+        "purpose": "Focus ring inside after-hours dark sections only. Soft amber halo. Never appears in the cream world."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-editorial",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Quartic ease-out — image reveals, scroll-driven scaling, slow product hover. Unhurried."
+      },
+      {
+        "name": "ease-button",
+        "value": "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        "purpose": "Standard ease-out for cream-world button color/border state changes. 400ms default."
+      },
+      {
+        "name": "duration-instant",
+        "value": "200ms",
+        "purpose": "Immediate state acknowledgment — focus ring, input border."
+      },
+      {
+        "name": "duration-default",
+        "value": "400ms",
+        "purpose": "Button hover, navlink underline, card background wash."
+      },
+      {
+        "name": "duration-deliberate",
+        "value": "1500ms",
+        "purpose": "Editorial reveals — product image scale on hover, image cross-fades. The brand pace."
+      }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "640px" },
+      { "name": "tablet", "value": "768px" },
+      { "name": "desktop", "value": "1024px" },
+      { "name": "wide", "value": "1440px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Brand Wordmark (Hero)",
+      "kind": "custom",
+      "refersTo": "display-cream",
+      "description": "The hero brand wordmark. One per page. Architectural extrusion in text-shadow.",
+      "html": "<div class=\"ds-hero-wordmark\">DAUR</div>",
+      "css": ".ds-hero-wordmark { font-family: 'Bodoni Moda', Georgia, serif; font-weight: 900; font-size: clamp(120px, 22vw, 260px); letter-spacing: -0.025em; line-height: 0.85; color: transparent; background: linear-gradient(160deg, oklch(0.255 0.005 68) 0%, oklch(0.205 0.005 68) 35%, oklch(0.165 0.005 68) 60%, oklch(0.135 0.005 68) 100%); -webkit-background-clip: text; background-clip: text; text-shadow: 1px 2px 0 #161616, 2px 4px 0 #151515, 4px 8px 0 #131313, 8px 14px 0 #0f0f0f, 12px 18px 0 #0b0b0b, 16px 22px 0 #090909, 20px 26px 0 #070707, 22px 30px 18px rgba(0,0,0,0.55); user-select: none; text-align: center; }"
+    },
+    {
+      "name": "Cream Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Default cream-world CTA. Sharp, hairline-bordered, fills on hover.",
+      "html": "<button class=\"ds-btn-cream-primary\">ADD TO BAG</button>",
+      "css": ".ds-btn-cream-primary { font-family: 'Bodoni Moda', Georgia, serif; font-weight: 500; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: oklch(0.205 0.005 68); background: transparent; border: 1px solid oklch(0.205 0.005 68); border-radius: 0; padding: 16px 24px; cursor: pointer; transition: background-color 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94), color 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); } .ds-btn-cream-primary:hover { background: oklch(0.205 0.005 68); color: oklch(0.978 0.005 68); } .ds-btn-cream-primary:focus-visible { outline: 2px solid oklch(0.205 0.005 68); outline-offset: 2px; }"
+    },
+    {
+      "name": "After-Hours Primary Button",
+      "kind": "button",
+      "refersTo": "button-dark-primary",
+      "description": "After-hours dark world CTA. The one place a saturated amber fill sits on a button.",
+      "html": "<button class=\"ds-btn-dark-primary\">ENTER ATELIER</button>",
+      "css": ".ds-btn-dark-primary { font-family: 'DM Sans', system-ui, sans-serif; font-weight: 500; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: oklch(0.135 0.005 68); background: oklch(0.78 0.155 68); border: none; border-radius: 0; padding: 18px 28px; cursor: pointer; transition: filter 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); } .ds-btn-dark-primary:hover { filter: brightness(1.08); } .ds-btn-dark-primary:focus-visible { outline: none; box-shadow: 0 0 0 2px oklch(0.78 0.155 68), 0 8px 32px oklch(0.78 0.155 68 / 0.25); }"
+    },
+    {
+      "name": "After-Hours Ghost Button",
+      "kind": "button",
+      "refersTo": "button-dark-ghost",
+      "description": "Secondary CTA inside after-hours sections. Border becomes brass on hover.",
+      "html": "<button class=\"ds-btn-dark-ghost\">VIEW LOOKBOOK</button>",
+      "css": ".ds-btn-dark-ghost { font-family: 'DM Sans', system-ui, sans-serif; font-weight: 500; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: oklch(0.978 0.005 68); background: transparent; border: 1px solid oklch(0.892 0.005 68 / 0.2); border-radius: 0; padding: 16px 24px; cursor: pointer; transition: border-color 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94), color 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); } .ds-btn-dark-ghost:hover { border-color: oklch(0.78 0.155 68); color: oklch(0.78 0.155 68); }"
+    },
+    {
+      "name": "Cream Product Cell",
+      "kind": "card",
+      "refersTo": "product-card-cream",
+      "description": "Cream-world product cell. Sharp corners, participates in stitched grid via right+bottom hairlines.",
+      "html": "<article class=\"ds-card-cream\"><div class=\"ds-card-cream__img\"></div><div class=\"ds-card-cream__info\"><h3 class=\"ds-card-cream__name\">Sculptural Coat</h3><span class=\"ds-card-cream__price\">₹52,000</span></div></article>",
+      "css": ".ds-card-cream { background: oklch(0.978 0.005 68); color: oklch(0.205 0.005 68); border-right: 1px solid oklch(0.892 0.005 68); border-bottom: 1px solid oklch(0.892 0.005 68); border-radius: 0; padding: 64px 32px; display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: background-color 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); } .ds-card-cream:hover { background: oklch(0.95 0.005 68); } .ds-card-cream__img { width: 100%; aspect-ratio: 3.5/5; background: oklch(0.95 0.005 68); margin-bottom: 3rem; overflow: hidden; } .ds-card-cream__info { display: flex; flex-direction: column; gap: 0.5rem; text-align: center; } .ds-card-cream__name { font-family: 'Bodoni Moda', Georgia, serif; font-weight: 500; font-size: 0.85rem; letter-spacing: 0.18em; text-transform: uppercase; margin: 0; } .ds-card-cream__price { font-family: 'Bodoni Moda', Georgia, serif; font-size: 0.85rem; color: oklch(0.543 0.005 68); }"
+    },
+    {
+      "name": "After-Hours Product Card",
+      "kind": "card",
+      "refersTo": "product-card-dark",
+      "description": "After-hours product card — rounded-2xl, tactile register. The intentional shape-shift from cream-world architecture to dark-world object.",
+      "html": "<article class=\"ds-card-dark\"><div class=\"ds-card-dark__img\"></div><span class=\"ds-card-dark__chip\">NEW</span><div class=\"ds-card-dark__info\"><h3 class=\"ds-card-dark__name\">Silk Draped Dress</h3><span class=\"ds-card-dark__price\">₹38,500</span></div></article>",
+      "css": ".ds-card-dark { position: relative; background: oklch(0.135 0.005 68); color: oklch(0.978 0.005 68); border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 1.5rem; cursor: pointer; transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-card-dark:hover { transform: translateY(-4px); } .ds-card-dark__img { width: 100%; aspect-ratio: 3.5/5; background: oklch(0.20 0.005 68); border-radius: 12px; overflow: hidden; } .ds-card-dark__chip { position: absolute; top: 44px; left: 44px; background: oklch(0.78 0.155 68); color: oklch(0.135 0.005 68); font-family: 'DM Sans', system-ui, sans-serif; font-weight: 500; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 4px 10px; border-radius: 0; } .ds-card-dark__info { display: flex; flex-direction: column; gap: 0.4rem; } .ds-card-dark__name { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: 1.25rem; letter-spacing: -0.01em; line-height: 1.2; margin: 0; } .ds-card-dark__price { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.85rem; color: oklch(0.74 0.005 68); }"
+    },
+    {
+      "name": "Amber State Chip",
+      "kind": "chip",
+      "refersTo": "chip-amber",
+      "description": "After-hours state indicator — sale, new, in-stock. Always paired with a word; color alone never carries state.",
+      "html": "<span class=\"ds-chip-amber\">SALE</span>",
+      "css": ".ds-chip-amber { display: inline-block; background: oklch(0.78 0.155 68); color: oklch(0.135 0.005 68); font-family: 'DM Sans', system-ui, sans-serif; font-weight: 500; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 4px 10px; border-radius: 0; }"
+    },
+    {
+      "name": "Search Input",
+      "kind": "input",
+      "refersTo": "search-input",
+      "description": "Cream-world search field. Wrapper carries the border; input itself is borderless.",
+      "html": "<label class=\"ds-search\"><svg class=\"ds-search__icon\" viewBox=\"0 0 15 15\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"><path d=\"M10.5 10.5L13.5 13.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><circle cx=\"6.5\" cy=\"6.5\" r=\"5.5\" stroke=\"currentColor\" stroke-width=\"1.5\"/></svg><input class=\"ds-search__input\" type=\"search\" placeholder=\"Search\" aria-label=\"Search collection\"></label>",
+      "css": ".ds-search { display: inline-flex; align-items: center; gap: 12px; background: oklch(0.978 0.005 68); border: 1px solid oklch(0.892 0.005 68); border-radius: 0; padding: 8px 16px; color: oklch(0.205 0.005 68); transition: border-color 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94); } .ds-search:focus-within { border-color: oklch(0.205 0.005 68); } .ds-search__icon { width: 15px; height: 15px; color: oklch(0.205 0.005 68); flex-shrink: 0; } .ds-search__input { font-family: 'Bodoni Moda', Georgia, serif; font-size: 0.85rem; color: oklch(0.205 0.005 68); background: transparent; border: none; outline: none; width: 140px; } .ds-search__input::placeholder { color: oklch(0.543 0.005 68); }"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Cream-world top-nav link. Underline grows from left on hover; persists when active.",
+      "html": "<a href=\"#\" class=\"ds-nav-link\">COLLECTIONS</a>",
+      "css": ".ds-nav-link { font-family: 'Bodoni Moda', Georgia, serif; font-weight: 500; font-size: 1.1rem; letter-spacing: 0.06em; text-transform: uppercase; color: oklch(0.205 0.005 68); text-decoration: none; padding: 0; position: relative; cursor: pointer; } .ds-nav-link::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 1px; background: oklch(0.205 0.005 68); transition: width 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94); } .ds-nav-link:hover::after, .ds-nav-link[aria-current=\"page\"]::after { width: 100%; } .ds-nav-link:focus-visible { outline: 2px solid oklch(0.205 0.005 68); outline-offset: 4px; }"
+    },
+    {
+      "name": "Section Eyebrow",
+      "kind": "custom",
+      "refersTo": "label-cream",
+      "description": "Cream-world section subtitle / numbered eyebrow above editorial titles.",
+      "html": "<span class=\"ds-eyebrow\">Essential Selection</span>",
+      "css": ".ds-eyebrow { display: inline-block; font-family: 'Bodoni Moda', Georgia, serif; font-weight: 500; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; color: oklch(0.543 0.005 68); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Atelier After Hours",
+    "overview": "A collector is alone in the atelier at 9pm. Cream walls. The amber desk lamp is on. The windows are dark. A piece of fabric that costs more than rent is folded on a plinth. The room is warmth held inside restraint. That single image governs the whole site.\n\nThe cream hero world is the atelier by day — full ambient light, every architectural edge visible, type behaving like type set in stone. The after-hours dark sections that arrive later in the scroll are the same atelier with the lights dimmed: the same values, the same restraint, but now the brass desk lamp is the only warm thing in the room. Amber appears only in the dark world. It is forbidden in the cream world. The two registers are one brand — different light, never different brand.\n\nThis system explicitly rejects the commercial-glossy register of Net-a-Porter, the template-grid sameness of generic Shopify themes (Dawn, Impulse, Sense), and the purple-gradient / glassmorphism vocabulary of AI-startup landings.",
+    "keyCharacteristics": [
+      "Two-register system — cream atelier (day) and after-hours dark (night) — same brand",
+      "OKLCH-tinted neutrals canonical; pure #fff and #000 are never used",
+      "Bodoni Moda 900 carries the brand wordmark; weight is the loudest design element",
+      "Sharp border-radius: 0 everywhere in the cream world — no rounding in the hero",
+      "After-hours dark sections allowed rounded-2xl on product cards (tactile, not architectural)",
+      "Brass Lamp amber appears only in the dark world, never in cream",
+      "Hairlines (1px solid Atelier Chalk) are the only structure — no shadows in cream",
+      "Hierarchy whispers: ≥1.25 weight contrast, body ≤75ch, white space carries equal weight to type"
+    ],
+    "rules": [
+      {
+        "name": "The Two-Light Rule",
+        "section": "colors",
+        "body": "Brass Lamp amber lives only in the after-hours dark world. It is forbidden in the cream world. If a cream-world surface has amber on it, the surface is broken — not the rule."
+      },
+      {
+        "name": "The No-Pure-Black Rule",
+        "section": "colors",
+        "body": "Pure #000 and pure #fff are prohibited. Plinth Black, Atelier Cream, and After Hours Dark replace them. Pure neutrals make the page read as a template; tinted neutrals make it read as a room."
+      },
+      {
+        "name": "The State-Plus-Word Rule",
+        "section": "colors",
+        "body": "Color alone never carries state. 'In stock' is the chip plus the word. 'Sale' is the chip plus the price. WCAG 2.2 AA, deuteranopia, protanopia all pass because color is never the only signal."
+      },
+      {
+        "name": "The Weight-Beats-Color Rule",
+        "section": "typography",
+        "body": "Hierarchy contrast comes from weight (900 → 400 → 300) and from spacing, never from color. Two grays of different lightness for 'primary' and 'secondary' text is the SaaS reflex; we reject it. Smoked Pewter is reserved for labels, not for 'softer body copy'."
+      },
+      {
+        "name": "The Inter Ban",
+        "section": "typography",
+        "body": "Inter does not appear anywhere in this system. If you need a sans in a dark section, it is DM Sans. If you need a sans in the cream world, the answer is 'you don't — use Bodoni Moda at 500'."
+      },
+      {
+        "name": "The Hairline-Or-Nothing Rule",
+        "section": "elevation",
+        "body": "Cream-world structure is 1px solid Atelier Chalk or nothing. No 2px, no border-left accent stripes, no shadow. If a section needs to feel heavier, change the spacing — not the line weight."
+      },
+      {
+        "name": "The Flat Cream Rule",
+        "section": "elevation",
+        "body": "Cream sections have no box-shadow. None. The 3D in the hero is done in text-shadow on the wordmark; that is the only sculpting we allow above the fold. Anywhere else in the cream world, box-shadow: none."
+      }
+    ],
+    "dos": [
+      "Do keep border-radius: 0 on every cream-world surface — buttons, cards, search, navbar, footer. The hero world is sharp and architectural. There is no rounding above the after-hours sections.",
+      "Do allow rounded-2xl (16px) on product cards inside after-hours dark sections. That is the one register-shift, and it is intentional.",
+      "Do use OKLCH-tinted neutrals as canonical (oklch(0.978 0.005 68) etc.). Treat any #fff / #000 literal in source as a current-state migration target.",
+      "Do pair every Brass Lamp state indicator with text — 'SALE', 'NEW', 'IN STOCK'. Color alone never carries state.",
+      "Do drive hierarchy through weight contrast (≥1.25 ratio across steps) and white space, not through color shifts.",
+      "Do cap body copy at 65–75ch. Editorial breathes; it does not run the full width.",
+      "Do use Smoked Pewter strictly for labels, captions, and side-numbers — never for body text or 'softer' paragraphs.",
+      "Do preserve cadence in the reduced-motion experience. Slower, damped — never a static photo fallback. Motion is identity."
+    ],
+    "donts": [
+      "Don't use pure #000 or #fff anywhere. Tinted neutrals only.",
+      "Don't put Brass Lamp amber in the cream world. Not on hover, not in icons, not in chips. Amber is the after-hours signal.",
+      "Don't add box-shadow to any cream-world section. The only depth in the cream world is the hero wordmark's text-shadow ladder — and that is the wordmark's alone.",
+      "Don't use side-stripe border-left or border-right greater than 1px as a colored accent. Hairlines or full borders or nothing.",
+      "Don't use gradient text outside the hero wordmark. The hero gradient is the only one that exists in this system.",
+      "Don't ship Inter. The Inter @import in globals.css is current-state; it should be removed when the dark sections introduce DM Sans.",
+      "Don't rebuild the Net-a-Porter sale-banner / urgent-CTA pattern. No countdowns, no 'limited stock' badges, no popups. The experience sells; the CTA only confirms.",
+      "Don't drift toward generic Shopify themes (Dawn, Impulse, Sense). Identical card grids with icon-heading-text are the disqualifying tell. Vary cell density.",
+      "Don't bring AI-startup-landing vocabulary into DAUR — purple-to-pink gradients, glassmorphism overlays, bouncy spring transitions. They signal zero design thinking and break the after-hours world the moment they appear.",
+      "Don't rename the registers in code. The tokens are cream, dark, after-hours, brass-lamp. Do not call them light / dark / accent — those are SaaS terms and they erase the metaphor."
+    ]
+  }
+}
