@@ -11,12 +11,23 @@ import { useSwipeDetect } from './useSwipeDetect';
 
 const AUTO_ADVANCE_MS = 4500;
 
-export default function ProductCatalogueSection() {
+import type { Product } from './products.data';
+
+interface ProductCatalogueSectionProps {
+  onActiveChange?: (product: Product) => void;
+}
+
+export default function ProductCatalogueSection({ onActiveChange }: ProductCatalogueSectionProps) {
   const [[activeIndex, direction], setPage] = useState([0, 1]);
   const sectionRef = useRef<HTMLElement>(null);
   const totalSlides = products.length;
 
   const activeProduct = products[activeIndex];
+
+  // notify parent when active product changes
+  React.useEffect(() => {
+    if (onActiveChange) onActiveChange(activeProduct);
+  }, [activeProduct, onActiveChange]);
 
   const paginate = useCallback((newDirection: number) => {
     setPage((prev) => {

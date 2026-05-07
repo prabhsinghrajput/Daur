@@ -1,18 +1,19 @@
+import Link from 'next/link';
 import styles from '../app/home.module.css';
 
 export default function Navbar() {
   return (
     <nav className={styles.nav}>
       <div className={styles.navSection}>
-        <span className={styles.navLink}>Collections</span>
-        <span className={styles.navLink}>Editorial</span>
-        <span className={styles.navLink}>Atelier</span>
+        <Link href="/collections" className={styles.navLink}>Collections</Link>
+        <Link href="/editorial" className={styles.navLink}>Editorial</Link>
+        <Link href="/atelier" className={styles.navLink}>Atelier</Link>
       </div>
 
-      <div className={styles.navLogo}>DAUR</div>
+      <Link href="/" className={styles.navLogo}>DAUR</Link>
 
       <div className={styles.navSection}>
-        <span className={styles.navLink}>About</span>
+        <Link href="/about" className={styles.navLink}>About</Link>
         <div className={styles.rightControls}>
           <svg className={styles.bagIcon} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
             <path d="M6 2L3 6V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H19C19.5304 22 20.0391 21.7893 20.4142 21.4142C20.7893 21.0391 21 20.5304 21 20V6L18 2H6Z" />

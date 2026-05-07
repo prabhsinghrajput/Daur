@@ -1,0 +1,252 @@
+.main {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fff;
+  padding-top: 80px;
+}
+
+.productLayout {
+  display: grid;
+  grid-template-columns: 1fr 450px;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  gap: 6rem;
+}
+
+/* LEFT SIDE - GALLERY */
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+.galleryImageWrapper {
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
+  aspect-ratio: 1/1;
+  background-color: #fcfcfc;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.galleryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.galleryImageWrapper:hover .galleryImage {
+  transform: scale(1.05);
+}
+
+/* 360 VIEW BUTTON */
+.view360Btn {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  z-index: 20;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.view360Btn:hover {
+  background-color: #1a1a18;
+  color: #fff;
+  transform: translateX(-50%) translateY(-2px);
+}
+
+.view360BtnActive {
+  background-color: #1a1a18;
+  color: #fff;
+}
+
+/* RIGHT SIDE - INFO */
+.stickyInfo {
+  position: sticky;
+  top: 120px;
+  height: fit-content;
+}
+
+.breadcrumb {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.4;
+  margin-bottom: 2rem;
+}
+
+.productHeader {
+  margin-bottom: 3rem;
+}
+
+.productName {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  color: #1a1a18;
+}
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.price {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.tagline {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  opacity: 0.6;
+  font-style: italic;
+}
+
+/* SELECTORS */
+.selectorSection {
+  margin-bottom: 2.5rem;
+}
+
+.selectorLabel {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.sizeGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+}
+
+.sizeBtn {
+  border: 1px solid #e0e0e0;
+  background: none;
+  padding: 0.8rem 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.sizeBtn:hover {
+  border-color: #1a1a18;
+}
+
+.sizeBtnActive {
+  background-color: #1a1a18;
+  color: #fff;
+  border-color: #1a1a18;
+}
+
+/* ACTIONS */
+.actionButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.addToCartBtn {
+  width: 100%;
+  padding: 1.2rem;
+  background: none;
+  border: 1px solid #1a1a18;
+  color: #1a1a18;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.addToCartBtn:hover {
+  background-color: #f9f9f9;
+}
+
+.buyNowBtn {
+  width: 100%;
+  padding: 1.2rem;
+  background: #1a1a18;
+  border: 1px solid #1a1a18;
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.buyNowBtn:hover {
+  opacity: 0.9;
+}
+
+/* ACCORDION / DETAILS */
+.detailsSection {
+  border-top: 1px solid #f0f0f0;
+  padding-top: 2rem;
+}
+
+.detailItem {
+  margin-bottom: 1.5rem;
+}
+
+.detailTitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.detailValue {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+  opacity: 0.7;
+}
+
+@media (max-width: 1024px) {
+  .productLayout {
+    grid-template-columns: 1fr;
+    padding: 2rem 1rem;
+  }
+
+  .stickyInfo {
+    position: static;
+  }
+}

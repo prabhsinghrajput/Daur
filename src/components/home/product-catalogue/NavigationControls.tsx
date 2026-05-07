@@ -27,8 +27,7 @@ export default function NavigationControls({
 
   const handleHover = (el: HTMLElement | null, xOffset: number) => {
     if (el) {
-      animate({
-        targets: el,
+      animate(el, {
         translateX: xOffset,
         duration: 300,
         easing: 'easeOutExpo'
@@ -38,8 +37,7 @@ export default function NavigationControls({
 
   const handleLeave = (el: HTMLElement | null) => {
     if (el) {
-      animate({
-        targets: el,
+      animate(el, {
         translateX: 0,
         duration: 300,
         easing: 'easeOutExpo'

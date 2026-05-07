@@ -259,6 +259,66 @@
   bottom: 1.5rem;
 }
 
+/* Collection overlay (left) */
+.collectionOverlay {
+  position: absolute;
+  left: 6vw;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 6;
+  max-width: 560px;
+  color: #0b0b0b;
+}
+
+.collectionLabel {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+.collectionYear {
+  font-family: var(--font-serif);
+  font-size: 3.4rem;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+}
+
+.collectionDesc {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  max-width: 42ch;
+  margin-bottom: 2.2rem;
+  color: rgba(15,15,15,0.9);
+}
+
+.lookRow {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.lookLabel {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+}
+
+.lookNumber {
+  font-family: var(--font-serif);
+  font-size: 3.8rem;
+  font-weight: 700;
+}
+
+.shopLink {
+  display: inline-block;
+  margin-top: 0.6rem;
+  text-decoration: underline;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
 /* FEATURED COLLECTION */
 .section {
   padding: 0;

@@ -54,7 +54,7 @@ export default function ProductSliderView({ products, activeIndex, onThumbClick 
         height: '40%',
         top: '50%',
         y: '-50%',
-        opacity: offset > 3 ? 0 : 1, // Show only up to 3 upcoming slides
+        opacity: offset > 3 ? 0 : 0.5, // Reduced opacity for upcoming slides to 50%
         zIndex: 10 - offset,
         filter: 'blur(0px)',
       };
@@ -90,19 +90,6 @@ export default function ProductSliderView({ products, activeIndex, onThumbClick 
                 src={product.heroImage}
                 alt={product.name}
                 className={styles.sliderImage}
-              />
-              {/* Optional: Add a subtle overlay for inactive slides to draw focus to the active one */}
-              <motion.div
-                animate={{
-                  opacity: index === activeIndex ? 0 : 0.2,
-                }}
-                transition={{ duration: 1.1 }}
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  backgroundColor: '#000',
-                  pointerEvents: 'none',
-                }}
               />
             </motion.div>
           );

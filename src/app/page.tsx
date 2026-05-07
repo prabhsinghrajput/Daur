@@ -3,15 +3,17 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './home.module.css';
 import Navbar from '../components/Navbar';
-import Hero from '../components/Hero';
-import Editorial from '../components/Editorial';
-import About from '../components/About';
-import Footer from '../components/Footer';
-import ProductCatalogueSection from '../components/product-catalogue';
+import Hero from '../components/home/Hero';
+import Editorial from '../components/home/Editorial';
+import About from '../components/home/About';
+import Footer from '../components/home/Footer';
+import ProductCatalogueSection from '../components/home/product-catalogue';
+import type { Product } from '../components/home/product-catalogue/products.data';
 
 export default function Home() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const trackRef = useRef<HTMLDivElement>(null);
+  const [activeProduct, setActiveProduct] = useState<Product | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,8 +40,8 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <Navbar />
-      <Hero trackRef={trackRef} scrollProgress={scrollProgress} />
-      <ProductCatalogueSection />
+      <Hero trackRef={trackRef} scrollProgress={scrollProgress} activeProduct={activeProduct} />
+      <ProductCatalogueSection onActiveChange={(p) => setActiveProduct(p)} />
       <Editorial />
       <About />
       <Footer />
