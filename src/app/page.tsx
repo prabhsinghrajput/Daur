@@ -4,8 +4,9 @@ import { useEffect, useRef, useState } from 'react';
 import styles from './home.module.css';
 import Navbar from '../components/Navbar';
 import Hero from '../components/home/Hero';
-import Editorial from '../components/home/Editorial';
-import About from '../components/home/About';
+import LatestDrops from '../components/home/LatestDrops';
+import FashionShowcase from '../components/home/FashionShowcase';
+import SocialReels from '../components/home/SocialReels';
 import Footer from '../components/home/Footer';
 import ProductCatalogueSection from '../components/home/product-catalogue';
 import type { Product } from '../components/home/product-catalogue/products.data';
@@ -41,9 +42,10 @@ export default function Home() {
     <main className={styles.main}>
       <Navbar />
       <Hero trackRef={trackRef} scrollProgress={scrollProgress} activeProduct={activeProduct} />
+      <LatestDrops />
+      <FashionShowcase />
+      <SocialReels />
       <ProductCatalogueSection onActiveChange={(p) => setActiveProduct(p)} />
-      <Editorial />
-      <About />
       <Footer />
     </main>
   );

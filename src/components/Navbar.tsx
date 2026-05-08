@@ -1,13 +1,13 @@
 import Link from 'next/link';
-import styles from '../app/home.module.css';
+import styles from './Navbar.module.css';
 
 export default function Navbar() {
   return (
     <nav className={styles.nav}>
       <div className={styles.navSection}>
         <Link href="/collections" className={styles.navLink}>Collections</Link>
-        <Link href="/editorial" className={styles.navLink}>Editorial</Link>
-        <Link href="/atelier" className={styles.navLink}>Atelier</Link>
+        <Link href="/active" className={styles.navLink}>Active</Link>
+        <Link href="/labs" className={styles.navLink}>Labs</Link>
       </div>
 
       <Link href="/" className={styles.navLogo}>DAUR</Link>
@@ -22,8 +22,8 @@ export default function Navbar() {
           </svg>
           <div className={styles.searchBox}>
             <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10.5 10.5L13.5 13.5" stroke="#1A1A1A" strokeWidth="1.5" strokeLinecap="round" />
-              <circle cx="6.5" cy="6.5" r="5.5" stroke="#1A1A1A" strokeWidth="1.5" />
+              <path d="M10.5 10.5L13.5 13.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              <circle cx="6.5" cy="6.5" r="5.5" stroke="currentColor" strokeWidth="1.5" />
             </svg>
             <input type="text" placeholder="Search" className={styles.searchInput} />
           </div>

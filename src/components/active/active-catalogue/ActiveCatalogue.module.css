@@ -1,0 +1,36 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 35% 65%;
+  background-color: #fff;
+  transition: background-color 1.2s ease-in-out;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+  }
+}
+
+.rightPanel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 4rem 4rem 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+  .rightPanel {
+    padding: 2rem 1.5rem 0 1.5rem;
+    height: 60vh;
+    order: 1;
+  }
+}

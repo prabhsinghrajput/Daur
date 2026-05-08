@@ -1,0 +1,208 @@
+.section {
+  width: 100%;
+  padding: 4rem 0;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: #000;
+  letter-spacing: -0.02em;
+}
+
+.scrollContainer {
+  position: relative;
+  width: 100%;
+}
+
+.track {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 0 5%;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  flex: 0 0 calc(18% - 10px); /* Approx 5.5 items visible on desktop */
+  min-width: 240px;
+  aspect-ratio: 9 / 16;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.videoWrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+
+.iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  pointer-events: none; /* Allows scrolling and overlay interaction */
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, transparent 40%, rgba(0,0,0,0.5) 100%);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+  z-index: 5;
+  pointer-events: none; /* Allows clicking through to the video if needed, but we might want it for UI */
+}
+
+.topRow, .bottomContent, .qrBadge, .downloadApp {
+  pointer-events: auto; /* Re-enable for specific UI elements */
+}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.userIcon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.shopIcon {
+  width: 28px;
+  height: 28px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.playCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  opacity: 0.8;
+}
+
+.bottomContent {
+  font-size: 0.9rem;
+  line-height: 1.3;
+  font-weight: 600;
+  margin-top: auto;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.qrBadge {
+  position: absolute;
+  bottom: 40px;
+  left: 12px;
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border-radius: 4px;
+  padding: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.downloadApp {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.navArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  cursor: pointer;
+  z-index: 10;
+  border: none;
+  transition: transform 0.2s ease, background 0.2s ease;
+  pointer-events: auto;
+}
+
+.navArrow:hover {
+  background: #f8f8f8;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.navArrow.prev {
+  left: 20px;
+}
+
+.navArrow.next {
+  right: 20px;
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex: 0 0 70%;
+  }
+}
