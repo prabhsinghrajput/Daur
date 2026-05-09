@@ -6,22 +6,23 @@ export default function Footer() {
       <div className={styles.footerTop}>
         <div className={styles.footerCol}>
           <div className={styles.footerLogo}>DAUR</div>
-          <p style={{ fontSize: '0.8rem', color: '#7a7a7a', lineHeight: 1.6, maxWidth: '200px' }}>
-            High-end luxury fashion House established in Paris.
+          <p style={{ fontSize: '0.8rem', color: '#7a7a7a', lineHeight: 1.6, maxWidth: '220px' }}>
+            High-end luxury fashion House inspired by Himalayan heritage and modern silhouettes.
           </p>
         </div>
         <div className={styles.footerCol}>
           <h4 className={styles.footerTitle}>Collections</h4>
-          <a href="#" className={styles.footerLink}>New Arrivals</a>
-          <a href="#" className={styles.footerLink}>Ready to Wear</a>
-          <a href="#" className={styles.footerLink}>Accessories</a>
+          <a href="/collections" className={styles.footerLink}>Main Collection</a>
+          <a href="/active" className={styles.footerLink}>Daur Active</a>
+          <a href="/labs" className={styles.footerLink}>Daur Labs</a>
         </div>
         <div className={styles.footerCol}>
           <h4 className={styles.footerTitle}>Brand</h4>
-          <a href="#" className={styles.footerLink}>Atelier</a>
+          <a href="/about" className={styles.footerLink}>Our Story</a>
           <a href="#" className={styles.footerLink}>Sustainability</a>
           <a href="#" className={styles.footerLink}>Journal</a>
         </div>
+
         <div className={styles.footerCol}>
           <h4 className={styles.footerTitle}>Inquiries</h4>
           <div style={{ display: 'flex', borderBottom: '1px solid #1a1a1a', paddingBottom: '0.8rem', marginTop: '1rem' }}>

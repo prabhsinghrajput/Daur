@@ -58,6 +58,29 @@
   transition: width 0.3s ease;
 }
 
+.bagWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.cartBadge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #000;
+  color: #fff;
+  font-size: 10px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
 .navLink:hover::after {
   width: 100%;
 }
@@ -85,7 +108,19 @@
   color: #000;
 }
 
-.bagIcon {
+.bagIcon,
+.heartIcon {
   color: #000;
+  transition: opacity 0.2s, color 0.2s;
 }
+
+.bagWrapper:hover .bagIcon,
+.bagWrapper:hover .heartIcon {
+  opacity: 0.6;
+}
+
+.bagWrapper:hover .heartIcon {
+  color: #ff4444;
+}
+
 

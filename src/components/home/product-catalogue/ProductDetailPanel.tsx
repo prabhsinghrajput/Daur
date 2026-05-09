@@ -1,52 +1,72 @@
 "use client";
 
 import React, { useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, Variants } from 'motion/react';
 import { animate } from 'animejs';
+
 import styles from './catalogue.module.css';
 import { Product } from './products.data';
+import { useWishlist } from '../../../context/WishlistContext';
+import { useCart } from '../../../context/CartContext';
+
 
 interface ProductDetailPanelProps {
   product: Product;
   activeIndex: number;
 }
 
-const detailVariants = {
+const detailVariants: Variants = {
   hidden: { opacity: 0, x: -40, filter: "blur(8px)" },
   visible: {
     opacity: 1, x: 0, filter: "blur(0px)",
     transition: {
       duration: 0.9,
-      ease: [0.16, 1, 0.3, 1],
+      ease: [0.16, 1, 0.3, 1] as const,
       staggerChildren: 0.1
     }
   },
   exit: {
     opacity: 0, x: -30, filter: "blur(4px)",
-    transition: { duration: 0.4, ease: [0.4, 0, 1, 1] }
+    transition: { duration: 0.4, ease: [0.4, 0, 1, 1] as const }
   }
+
 };
 
-const childVariants = {
+const childVariants: Variants = {
   hidden: { opacity: 0, x: -20, filter: "blur(8px)" },
   visible: { opacity: 1, x: 0, filter: "blur(0px)" },
   exit: { opacity: 0, x: -20, filter: "blur(4px)" }
 };
 
+
 export default function ProductDetailPanel({ product, activeIndex }: ProductDetailPanelProps) {
   const bagBtnRef = useRef<HTMLButtonElement>(null);
   const heartIconRef = useRef<HTMLSpanElement>(null);
+  const { addToCart } = useCart();
+  const { toggleWishlist, isInWishlist } = useWishlist();
   const [added, setAdded] = useState(false);
-  const [wished, setWished] = useState(false);
+
+  const isWished = isInWishlist(product.id);
 
   const handleAddBag = () => {
     if (bagBtnRef.current) {
-      animate({
-        targets: bagBtnRef.current,
+      animate(bagBtnRef.current, {
         scale: [1, 0.96, 1],
         duration: 300,
         easing: 'easeOutBack'
       });
+
+
+      
+      addToCart({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        size: 'M',
+        image: product.heroImage,
+        quantity: 1
+      });
+
       setAdded(true);
       setTimeout(() => setAdded(false), 2000);
     }
@@ -54,15 +74,23 @@ export default function ProductDetailPanel({ product, activeIndex }: ProductDeta
 
   const handleWishlist = () => {
     if (heartIconRef.current) {
-      animate({
-        targets: heartIconRef.current,
+      animate(heartIconRef.current, {
         scale: [1, 1.4, 1],
         duration: 400,
         easing: 'easeOutElastic(1, 0.5)'
       });
-      setWished(!wished);
+
+
+      
+      toggleWishlist({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.heroImage
+      });
     }
   };
+
 
   return (
     <div className={styles.leftPanel}>
@@ -127,9 +155,10 @@ export default function ProductDetailPanel({ product, activeIndex }: ProductDeta
               onClick={handleWishlist}
             >
               <span ref={heartIconRef} className={styles.heartIcon}>
-                {wished ? '♥' : '♡'}
+                {isWished ? '♥' : '♡'}
               </span>
             </button>
+
           </motion.div>
           
           <motion.div variants={childVariants} className={styles.bottomMeta}>

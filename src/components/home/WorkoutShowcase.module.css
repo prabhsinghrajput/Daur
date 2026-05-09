@@ -1,0 +1,155 @@
+.section {
+  width: 100%;
+  height: 100vh; /* Fit to screen */
+  padding: 2rem 4vw;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  max-width: 1400px;
+  background-color: #e5e7eb;
+  border-radius: 40px;
+  padding: 4rem 4vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: #4b5563;
+}
+
+.title {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #1a1a1a;
+  letter-spacing: -0.01em;
+}
+
+.headerRight {
+  max-width: 300px;
+}
+
+.description {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #4b5563;
+  text-align: right;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+  flex-grow: 1; /* Take remaining space */
+  min-height: 0; /* Important for flex child to shrink/fit */
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%; /* Fill card */
+  border-radius: 32px;
+  overflow: hidden;
+  background-color: #ddd;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 40%, rgba(0,0,0,0.4) 100%);
+}
+
+.cardLabel {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.05em;
+  text-align: right;
+  display: block;
+}
+
+.cardTitle {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+
+
+.accent {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 1024px) {
+  .headerRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  
+  .headerRight {
+    max-width: 100%;
+    text-align: left;
+  }
+  
+  .description {
+    text-align: left;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .cardTitle {
+    font-size: 2rem;
+  }
+}

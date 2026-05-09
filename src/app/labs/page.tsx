@@ -10,8 +10,9 @@ import { labsProducts } from '../../components/labs/labsProducts.data';
 export default function LabsPage() {
   const [activeLook, setActiveLook] = React.useState(0);
   
-  // Expand to ensure deep runway depth
-  const totalProducts = [...labsProducts, ...labsProducts].slice(0, 8);
+  // Use the full set of lab products, doubled for the runway depth effect
+  const totalProducts = [...labsProducts, ...labsProducts];
+
 
   return (
     <main className={collectionsStyles.main}>
@@ -20,13 +21,13 @@ export default function LabsPage() {
       <div className={collectionsStyles.contentWrapper}>
         {/* LEFT PANEL: RUNWAY VIEW */}
         <Runway 
-          totalProducts={totalProducts as any} 
+          totalProducts={totalProducts} 
           activeLook={activeLook} 
         />
 
         {/* RIGHT PANEL: PRODUCT SIDEBAR (INFINITE LOOP) */}
         <ProductSidebar 
-          totalProducts={totalProducts as any} 
+          totalProducts={totalProducts} 
           setActiveLook={setActiveLook} 
         />
       </div>

@@ -20,13 +20,13 @@ export default function ActivePage() {
       <div className={collectionsStyles.contentWrapper}>
         {/* LEFT PANEL: RUNWAY VIEW */}
         <Runway 
-          totalProducts={totalProducts as any} 
+          totalProducts={totalProducts} 
           activeLook={activeLook} 
         />
 
         {/* RIGHT PANEL: PRODUCT SIDEBAR (INFINITE LOOP) */}
         <ProductSidebar 
-          totalProducts={totalProducts as any} 
+          totalProducts={totalProducts} 
           setActiveLook={setActiveLook} 
         />
       </div>

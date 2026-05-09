@@ -1,0 +1,180 @@
+.main {
+  background-color: #fff;
+  min-height: 100vh;
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 4vw;
+  gap: 4vw;
+  position: relative;
+}
+
+.heroContent {
+  flex: 1;
+  z-index: 2;
+}
+
+.title {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 1.1;
+  color: #1a1a1a;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.title span {
+  font-style: italic;
+  padding-left: 2rem;
+}
+
+.subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+.heroImageWrapper {
+  flex: 1;
+  height: 80vh;
+  position: relative;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+.heroImage {
+  object-fit: cover;
+}
+
+/* Philosophy */
+.philosophy {
+  padding: 10rem 4vw;
+  background-color: #f9f9f9;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 8vw;
+  align-items: center;
+}
+
+.tag {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 0.8rem;
+  color: #999;
+  margin-bottom: 1rem;
+}
+
+.sectionTitle {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  color: #1a1a1a;
+}
+
+.text {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+}
+
+.imageBlock {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-end;
+}
+
+.sideImage {
+  width: 40%;
+  height: 400px;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.mainImage {
+  width: 60%;
+  height: 600px;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+}
+
+/* Atelier */
+.atelier {
+  padding: 10rem 4vw;
+}
+
+.atelierTitle {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.atelierGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4vw;
+}
+
+.atelierCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cardImage {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.atelierCard h3 {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 2rem;
+}
+
+.atelierCard p {
+  font-family: 'Inter', sans-serif;
+  color: #666;
+  max-width: 400px;
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column;
+    height: auto;
+    padding-top: 120px;
+  }
+  
+  .heroImageWrapper {
+    width: 100%;
+    height: 60vh;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .atelierGrid {
+    grid-template-columns: 1fr;
+  }
+}

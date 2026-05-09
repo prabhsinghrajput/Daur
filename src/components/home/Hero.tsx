@@ -21,7 +21,8 @@ export default function Hero({ trackRef, scrollProgress, activeProduct }: HeroPr
           muted
           playsInline
         >
-          <source src="/Flow_202604301940.mp4" type="video/mp4" />
+          <source src="/video/Flow_202604301940.mp4" type="video/mp4" />
+
         </video>
 
         {/* 3D DAUR Model Logo */}
