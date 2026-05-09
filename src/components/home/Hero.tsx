@@ -1,6 +1,7 @@
 import { RefObject } from 'react';
 import styles from '../../app/home.module.css';
 import type { Product } from './product-catalogue/products.data';
+import Hero3D from './Hero3D';
 
 interface HeroProps {
   trackRef: RefObject<HTMLDivElement | null>;
@@ -23,17 +24,11 @@ export default function Hero({ trackRef, scrollProgress, activeProduct }: HeroPr
           <source src="/Flow_202604301940.mp4" type="video/mp4" />
         </video>
 
-        {/* 3D DAUR Image Text */}
-        <img
-          src="/DaurHero.png"
-          alt="DAUR"
-          className={styles.heroBrandImage}
-          style={{
-            transform: `translate(-50%, -50%) perspective(1000px) translateX(${(scrollProgress * -20).toFixed(2)}px) rotateX(${(scrollProgress * 5).toFixed(2)}deg) rotateY(${(scrollProgress * -10).toFixed(2)}deg)`
-          }}
-        />
+        {/* 3D DAUR Model Logo */}
+        <Hero3D scrollProgress={scrollProgress} />
 
       </div>
     </section>
   );
 }
+

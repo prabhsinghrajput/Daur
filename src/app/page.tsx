@@ -5,8 +5,8 @@ import styles from './home.module.css';
 import Navbar from '../components/Navbar';
 import Hero from '../components/home/Hero';
 import LatestDrops from '../components/home/LatestDrops';
-import FashionShowcase from '../components/home/FashionShowcase';
-import SocialReels from '../components/home/SocialReels';
+import CollectionCarousel from '../components/home/CollectionCarousel';
+import BrandDifference from '../components/home/BrandDifference';
 import Footer from '../components/home/Footer';
 import ProductCatalogueSection from '../components/home/product-catalogue';
 import type { Product } from '../components/home/product-catalogue/products.data';
@@ -43,8 +43,8 @@ export default function Home() {
       <Navbar />
       <Hero trackRef={trackRef} scrollProgress={scrollProgress} activeProduct={activeProduct} />
       <LatestDrops />
-      <FashionShowcase />
-      <SocialReels />
+      <CollectionCarousel />
+      <BrandDifference />
       <ProductCatalogueSection onActiveChange={(p) => setActiveProduct(p)} />
       <Footer />
     </main>
