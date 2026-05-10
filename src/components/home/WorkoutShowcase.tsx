@@ -26,9 +26,10 @@ const WorkoutShowcase = () => {
           <div className={styles.card}>
             <div className={styles.imageWrapper}>
               <Image 
-                src="/Men's outfit videos 《Casual Black Sweaters 》.jpg" 
+                src="/images/editorial/editorial1.jpg" 
                 alt="Workout Gear 1" 
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className={styles.image}
               />
               <div className={styles.overlay}>
@@ -46,9 +47,10 @@ const WorkoutShowcase = () => {
           <div className={styles.card}>
             <div className={styles.imageWrapper}>
               <Image 
-                src="/download (7).jpg" 
+                src="/images/editorial/editorial3.jpg" 
                 alt="Workout Gear 2" 
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className={styles.image}
               />
               <div className={styles.overlay}>

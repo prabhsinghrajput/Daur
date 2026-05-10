@@ -96,18 +96,35 @@
 .searchBox {
   display: flex;
   align-items: center;
-  border: 1px solid #e0e0e0;
-  padding: 8px 16px;
-  gap: 12px;
+  background-color: rgba(0, 0, 0, 0.04);
+  padding: 8px 18px;
+  gap: 10px;
+  border-radius: 50px;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  border: 1px solid transparent;
+  width: 180px;
+}
+
+.searchBox:focus-within {
   background-color: #fff;
+  border-color: rgba(0, 0, 0, 0.1);
+  width: 240px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .searchInput {
   border: none;
   outline: none;
   font-size: 0.85rem;
-  width: 120px;
-  color: #000;
+  width: 100%;
+  background: transparent;
+  color: #1a1a1a;
+  font-family: 'Inter', sans-serif;
+}
+
+.searchInput::placeholder {
+  color: #999;
+  font-weight: 400;
 }
 
 .bagIcon,

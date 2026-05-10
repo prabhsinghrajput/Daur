@@ -3,12 +3,12 @@ import styles from './PinterestGrid.module.css';
 
 const PinterestGrid = () => {
   const items = [
-    { id: 1, image: '/images/paris_fashion_week.png', size: 'medium', title: 'Parisian Pulse', description: 'High-fashion street aesthetics captured in the heart of Paris.' },
-    { id: 2, image: '/images/editorial/backman.jpg', size: 'large', title: 'Nippon Noir', description: 'Intricate crane embroidery inspired by traditional Japanese motifs.' },
-    { id: 3, image: '/images/editorial/if you want to have it dm me 😘.jpg', size: 'medium', title: 'Urban Craft', description: 'Modern silhouettes blended with artisanal hand-stitched textures.' },
-    { id: 4, image: '/images/editorial/download (7).jpg', size: 'medium', title: 'Nature\'s Bloom', description: 'Botanical embroidery meeting premium technical utility wear.' },
-    { id: 5, image: '/images/editorial/Updated Men’s Fashion & Outfit Trends.jpg', size: 'medium', title: 'Continental Shift', description: 'Reimagining classical tapestries through a modern fashion lens.' },
-    { id: 6, image: '/images/editorial/download (6).jpg', size: 'large', title: 'Artisanal Fusion', description: 'Exploring the intersection of contemporary techwear and classical art.' },
+    { id: 1, image: '/images/editorial/editorial5.jpg', size: 'medium', title: 'Parisian Pulse', description: 'High-fashion street aesthetics captured in the heart of Paris.' },
+    { id: 2, image: '/images/editorial/editorial1.jpg', size: 'large', title: 'Nippon Noir', description: 'Intricate crane embroidery inspired by traditional Japanese motifs.' },
+    { id: 3, image: '/images/editorial/editorial2.jpg', size: 'medium', title: 'Urban Craft', description: 'Modern silhouettes blended with artisanal hand-stitched textures.' },
+    { id: 4, image: '/images/editorial/editorial3.jpg', size: 'medium', title: 'Nature\'s Bloom', description: 'Botanical embroidery meeting premium technical utility wear.' },
+    { id: 5, image: '/images/editorial/editorial4.jpg', size: 'medium', title: 'Continental Shift', description: 'Reimagining classical tapestries through a modern fashion lens.' },
+    { id: 6, image: '/images/editorial/editorial5.jpg', size: 'large', title: 'Artisanal Fusion', description: 'Exploring the intersection of contemporary techwear and classical art.' },
 
 
 
