@@ -7,18 +7,27 @@
 
 .container {
   width: 100%;
-  padding: 0 4vw;
+  padding: 0;
 }
+
 
 .scrollWrapper {
   display: flex;
-  gap: 2rem;
-  overflow-x: auto;
-  padding-bottom: 2rem;
+  gap: 1rem;
+  width: 100%;
+  height: 600px;
   justify-content: center;
-  scrollbar-width: none;
-  /* Firefox */
+  align-items: center;
+  padding: 0 2rem;
 }
+
+.scrollWrapper::after {
+  content: '';
+  flex: 0 0 4vw;
+  min-width: 4vw;
+}
+
+
 
 .scrollWrapper::-webkit-scrollbar {
   display: none;
@@ -26,21 +35,27 @@
 }
 
 .card {
-  flex-shrink: 0;
-  height: 600px;
-  width: 200px;
-  /* Base width */
+  flex: 1;
+  height: 100%;
+  min-width: 100px;
   border-radius: 60px;
   overflow: hidden;
   position: relative;
-  transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   cursor: pointer;
 }
 
 .card:hover {
-  width: 550px;
-  /* Expanded "full" width */
+  flex: 5;
 }
+
+.scrollWrapper::after {
+  display: none;
+}
+
+
+
+
 
 /* Maintain class for identifying the featured item, but unify base size */
 .large {

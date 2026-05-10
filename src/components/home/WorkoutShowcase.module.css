@@ -16,110 +16,101 @@
   background-color: #e5e7eb;
   border-radius: 40px;
   padding: 4rem 4vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 2rem;
+  padding: 4rem 6vw;
+  position: relative;
 }
 
 .headerRow {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  width: 100%;
-}
-
-.headerLeft {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  margin-bottom: 4rem;
 }
 
 .label {
   font-family: 'Inter', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  color: #4b5563;
+  font-size: 0.75rem;
+  color: #666;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: block;
 }
 
 .title {
   font-family: 'Bodoni Moda', serif;
-  font-size: 3.5rem;
-  font-weight: 800;
-  line-height: 1;
+  font-size: 3rem;
+  font-weight: 700;
   color: #1a1a1a;
-  letter-spacing: -0.01em;
-}
-
-.headerRight {
-  max-width: 300px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 .description {
   font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
-  line-height: 1.4;
-  color: #4b5563;
-  text-align: right;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #666;
+  max-width: 400px;
 }
 
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
-  width: 100%;
-  flex-grow: 1; /* Take remaining space */
-  min-height: 0; /* Important for flex child to shrink/fit */
 }
 
 .card {
-  width: 100%;
-  height: 100%;
+  position: relative;
+  aspect-ratio: 16/10;
+  border-radius: 32px;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .imageWrapper {
-  position: relative;
   width: 100%;
-  height: 100%; /* Fill card */
-  border-radius: 32px;
-  overflow: hidden;
-  background-color: #ddd;
+  height: 100%;
+  position: relative;
 }
 
 .image {
   object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.card:hover .image {
+  transform: scale(1.05);
 }
 
 .overlay {
   position: absolute;
   inset: 0;
-  padding: 2.5rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 40%, rgba(0,0,0,0.4) 100%);
+  justify-content: flex-end;
+  padding: 3rem;
+  color: #fff;
 }
 
 .cardLabel {
   font-family: 'Inter', sans-serif;
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.6);
-  letter-spacing: 0.05em;
-  text-align: right;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
   display: block;
 }
 
 .cardTitle {
   font-family: 'Bodoni Moda', serif;
-  font-size: 2.5rem;
-  font-weight: 700;
-  line-height: 1.1;
-  color: #fff;
-  letter-spacing: -0.01em;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.2;
 }
-
-
 
 .accent {
   color: rgba(255, 255, 255, 0.5);

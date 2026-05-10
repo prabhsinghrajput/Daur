@@ -21,7 +21,7 @@ export default function Hero({ trackRef, scrollProgress, activeProduct }: HeroPr
           muted
           playsInline
         >
-          <source src="/video/Flow_202604301940.mp4" type="video/mp4" />
+          <source src="/video/herovideo2.mp4" type="video/mp4" />
 
         </video>
 

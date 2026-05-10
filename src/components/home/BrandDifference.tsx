@@ -6,17 +6,18 @@ const BrandDifference = () => {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
+        <div className={styles.bgText}>DAUR</div>
         <div className={styles.header}>
-          <span className={styles.label}>WHY CHOOSE US.</span>
-          <h2 className={styles.title}>DAUR: The Difference</h2>
+          <span className={styles.label}>PERFORMANCE REDEFINED.</span>
+          <h2 className={styles.title}>ACTIVE: The Difference</h2>
         </div>
 
         <div className={styles.content}>
           <div className={styles.leftSide}>
             <div className={styles.modelWrapper}>
               <Image 
-                src="/images/brand-difference/model.png" 
-                alt="Model showcasing DAUR collection" 
+                src="/images/active/active1.png" 
+                alt="Model showcasing DAUR ACTIVE collection" 
                 fill
                 className={styles.modelImage}
               />
@@ -36,56 +37,58 @@ const BrandDifference = () => {
           <div className={styles.rightSide}>
             <div className={styles.detailItem}>
               <div className={styles.textureWrapper}>
-                <div className={styles.textureBadge}>Top Wear</div>
+                <div className={styles.textureBadge}>Shell</div>
                 <Image 
-                  src="/images/brand-difference/topwear.png" 
-                  alt="Top wear fabric detail" 
+                  src="/images/active/active2.png" 
+                  alt="Technical shell fabric detail" 
                   width={150}
                   height={150}
                   className={styles.textureImage}
                 />
               </div>
               <div className={styles.detailText}>
-                <h3>Premium Fabric Comfort</h3>
-                <p>Our topwear is crafted from carefully selected fabrics that feel soft, breathable, and comfortable throughout the day. Designed to combine elegance with everyday wearability.</p>
+                <h3>High-Performance Shell</h3>
+                <p>Engineered with water-resistant matte polymers and a structural honeycomb weave. Designed for maximum protection without compromising on breathability.</p>
               </div>
             </div>
 
             <div className={styles.detailItem}>
               <div className={styles.textureWrapper}>
-                <div className={styles.textureBadge}>Bag</div>
+                <div className={styles.textureBadge}>Mesh</div>
                 <Image 
-                  src="/images/brand-difference/bag.png" 
-                  alt="Bag leather detail" 
+                  src="/images/active/active3.png" 
+                  alt="Cooling mesh detail" 
                   width={150}
                   height={150}
                   className={styles.textureImage}
                 />
               </div>
               <div className={styles.detailText}>
-                <h3>Premium Bag Essentials</h3>
-                <p>Our bags are crafted from high-quality materials that are durable and built for everyday use. Designed to combine functionality with modern elegance.</p>
+                <h3>Advanced Cooling Mesh</h3>
+                <p>Featuring a variable-density weave that targets high-heat zones. Moisture-wicking technology ensures you stay dry during peak athletic performance.</p>
               </div>
             </div>
 
             <div className={styles.detailItem}>
               <div className={styles.textureWrapper}>
-                <div className={styles.textureBadge}>Bottoms</div>
+                <div className={styles.textureBadge}>Knit</div>
                 <Image 
-                  src="/images/brand-difference/bottoms.png" 
-                  alt="Bottoms fabric detail" 
+                  src="/images/active/active4.png" 
+                  alt="Compression knit detail" 
                   width={150}
                   height={150}
                   className={styles.textureImage}
                 />
               </div>
               <div className={styles.detailText}>
-                <h3>Tailored Fit & Versatile Bottoms</h3>
-                <p>Our bottoms are designed with refined cuts and balanced silhouettes, offering a flattering fit that adapts easily to both casual and elevated looks.</p>
+                <h3>Architectural Compression</h3>
+                <p>A seamless, high-recovery knit that provides strategic muscle support. Anatomical ribbing adapts to your body's movement for a zero-friction experience.</p>
               </div>
             </div>
+
           </div>
         </div>
+
       </div>
     </section>
   );

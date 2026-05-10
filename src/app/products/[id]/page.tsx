@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, use } from 'react';
+import React, { useState, use, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
 import Navbar from '../../../components/Navbar';
@@ -74,14 +74,23 @@ export default function ProductPage({ params }: ProductPageProps) {
   const [userName, setUserName] = useState('');
   const [uploadedPhotos, setUploadedPhotos] = useState<string[]>([]);
 
-  const [reviews, setReviews] = useState([
+  interface Review {
+    id: number;
+    name: string;
+    date: string;
+    rating: number;
+    content: string;
+    photos: string[];
+  }
+
+  const [reviews, setReviews] = useState<Review[]>([
     {
       id: 1,
       name: 'Aditya S.',
       date: 'May 12, 2026',
       rating: 5,
       content: 'The texture of this pullover is unlike anything I have owned before. The 3D-knit topology gives it a very architectural feel. Fits true to size and feels incredibly premium.',
-      photos: [] // Will be populated in useEffect or just left empty for default
+      photos: []
     },
     {
       id: 2,
@@ -93,7 +102,18 @@ export default function ProductPage({ params }: ProductPageProps) {
     }
   ]);
 
+  const [recommendedProducts, setRecommendedProducts] = useState<any[]>([]);
+
+  useEffect(() => {
+    const shuffled = [...products, ...activeProducts, ...labsProducts]
+      .filter(p => p.id !== product?.id)
+      .sort(() => 0.5 - Math.random())
+      .slice(0, 4);
+    setRecommendedProducts(shuffled);
+  }, [product?.id]);
+
   const { addToCart } = useCart();
+
 
   const handleReviewSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -656,11 +676,7 @@ export default function ProductPage({ params }: ProductPageProps) {
           <Link href="/collections" className={styles.sizeGuideBtn} style={{ opacity: 1, textDecoration: 'none' }}>View All</Link>
         </div>
         <div className={styles.recommendedGrid}>
-          {[...products, ...activeProducts, ...labsProducts]
-            .filter(p => p.id !== product.id)
-            .sort(() => 0.5 - Math.random())
-            .slice(0, 4)
-            .map(rec => (
+          {recommendedProducts.map(rec => (
               <Link href={`/products/${rec.id}`} key={rec.id} className={styles.recommendedCard}>
                 <div className={styles.recommendedImageWrapper}>
                   <img src={rec.heroImage} alt={rec.name} className={styles.recommendedImage} />
@@ -671,6 +687,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                 </div>
               </Link>
             ))}
+
         </div>
       </section>
 
