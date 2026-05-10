@@ -5,7 +5,7 @@ import styles from './LatestDrops.module.css';
 const SLIDES = [
   {
     id: 1,
-    image: '/images/paris_fashion_week.png',
+    image: '/images/latest-drop/paris_fashion_week.png',
     title: 'Paris Fashion Week',
     subtitle: 'Straight From',
     sideTitle: 'Himalayan Art',
@@ -14,7 +14,7 @@ const SLIDES = [
   },
   {
     id: 2,
-    image: '/images/fashion_banner_2.png',
+    image: '/images/latest-drop/fashion_banner_2.png',
     title: 'Luxury Collection',
     subtitle: 'New Season',
     sideTitle: 'Minimalist Elegance',
@@ -23,7 +23,34 @@ const SLIDES = [
   },
   {
     id: 3,
-    image: '/images/paris_fashion_week.png',
+    image: '/images/latest-drop/download (12).jpg',
+    title: 'Urban Nomads',
+    subtitle: 'Collection 01',
+    sideTitle: 'Structured Tones',
+    sideSubtitle: 'Featuring Bold',
+    hasLogo: false
+  },
+  {
+    id: 4,
+    image: '/images/latest-drop/download (13).jpg',
+    title: 'Heritage Knit',
+    subtitle: 'Artisanal Series',
+    sideTitle: 'Ancient Techniques',
+    sideSubtitle: 'Woven With',
+    hasLogo: false
+  },
+  {
+    id: 5,
+    image: '/images/latest-drop/download (14).jpg',
+    title: 'Monochrome Era',
+    subtitle: 'Winter 2024',
+    sideTitle: 'Shadow & Light',
+    sideSubtitle: 'The Play Of',
+    hasLogo: false
+  },
+  {
+    id: 6,
+    image: '/images/latest-drop/paris_fashion_week.png',
     title: 'Artisan Craft',
     subtitle: 'The Art Of',
     sideTitle: 'Kathmandu',
@@ -37,114 +64,110 @@ const LatestDrops = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
   const isScrollingRef = useRef(false);
-  
-  const loopSlides = [...SLIDES, ...SLIDES, ...SLIDES];
   const totalSlides = SLIDES.length;
 
+  // We use 3 sets of slides for seamless looping
+  const loopSlides = [...SLIDES, ...SLIDES, ...SLIDES];
+
+  const getSlideWidth = () => {
+    if (scrollRef.current && scrollRef.current.children.length > 0) {
+      return (scrollRef.current.children[0] as HTMLElement).offsetWidth;
+    }
+    return 0;
+  };
+
+  const handleSilentJump = () => {
+    if (!scrollRef.current) return;
+    const slideWidth = getSlideWidth();
+    const { scrollLeft } = scrollRef.current;
+    const totalWidth = slideWidth * totalSlides;
+
+    if (scrollLeft < totalWidth * 0.5) {
+      scrollRef.current.style.scrollBehavior = 'auto';
+      scrollRef.current.scrollLeft = scrollLeft + totalWidth;
+    } else if (scrollLeft > totalWidth * 2.5) {
+      scrollRef.current.style.scrollBehavior = 'auto';
+      scrollRef.current.scrollLeft = scrollLeft - totalWidth;
+    }
+  };
+
   useEffect(() => {
-    if (scrollRef.current) {
-      const slide = scrollRef.current.children[0] as HTMLElement;
-      const slideWidth = slide.offsetWidth + 20;
-      scrollRef.current.scrollLeft = slideWidth * totalSlides;
-    }
-
-    const startAutoScroll = () => {
-      return setInterval(() => {
-        if (!isScrollingRef.current) {
-          scrollToSlide('next');
-        }
-      }, 4000);
-    };
-
-    let interval = startAutoScroll();
-
-    const handleMouseEnter = () => clearInterval(interval);
-    const handleMouseLeave = () => {
-      clearInterval(interval);
-      interval = startAutoScroll();
-    };
-
     const track = scrollRef.current;
-    if (track) {
-      track.addEventListener('mouseenter', handleMouseEnter);
-      track.addEventListener('mouseleave', handleMouseLeave);
-    }
+    if (!track) return;
+
+    // Initial position: start of the middle set
+    const init = () => {
+      const slideWidth = getSlideWidth();
+      if (track && slideWidth > 0) {
+        track.style.scrollBehavior = 'auto';
+        track.scrollLeft = slideWidth * totalSlides;
+      }
+    };
+
+    const timer = setTimeout(init, 200);
+
+    // Auto-scroll logic
+    const interval = setInterval(() => {
+      if (!isScrollingRef.current) {
+        scrollToSlide('next');
+      }
+    }, 5000);
+
+    const handleResize = () => {
+      if (track) {
+        track.style.scrollBehavior = 'auto';
+        init();
+      }
+    };
+    window.addEventListener('resize', handleResize);
 
     return () => {
+      clearTimeout(timer);
       clearInterval(interval);
-      if (track) {
-        track.removeEventListener('mouseenter', handleMouseEnter);
-        track.removeEventListener('mouseleave', handleMouseLeave);
-      }
+      window.removeEventListener('resize', handleResize);
     };
   }, [totalSlides]);
 
   const handleScroll = () => {
     if (!scrollRef.current) return;
 
-    const { scrollLeft, offsetWidth } = scrollRef.current;
-    const slide = scrollRef.current.children[0] as HTMLElement;
-    if (!slide) return;
-    
-    const slideWidth = slide.offsetWidth + 20;
-    const totalWidth = slideWidth * totalSlides;
+    const { scrollLeft } = scrollRef.current;
+    const slideWidth = getSlideWidth();
+    if (slideWidth === 0) return;
 
-    // Calculate active index for dots
-    const relativeScroll = scrollLeft % totalWidth;
+    // Calculate active index for dots based on scroll position
+    const relativeScroll = scrollLeft % (slideWidth * totalSlides);
     const index = Math.round(relativeScroll / slideWidth);
     setActiveIndex(index % totalSlides);
 
-    // SEAMLESS JUMP LOGIC
-    // We only jump when the user isn't actively being moved by our scrollToSlide function
-    // or when they've reached the extreme ends of our 3x buffer.
+    // Continuous jump check for manual scrolling (only when not animating)
     if (!isScrollingRef.current) {
-      if (scrollLeft <= slideWidth * 0.5) {
-        // Near start of 1st set -> Jump to 2nd set
-        scrollRef.current.style.scrollBehavior = 'auto';
-        scrollRef.current.scrollLeft = scrollLeft + totalWidth;
-        scrollRef.current.style.scrollBehavior = 'smooth';
-      } else if (scrollLeft >= slideWidth * (totalSlides * 2.5)) {
-        // Near end of 3rd set -> Jump to 2nd set
-        scrollRef.current.style.scrollBehavior = 'auto';
-        scrollRef.current.scrollLeft = scrollLeft - totalWidth;
-        scrollRef.current.style.scrollBehavior = 'smooth';
-      }
+      handleSilentJump();
     }
   };
 
   const scrollToSlide = (direction: 'prev' | 'next') => {
-    if (scrollRef.current) {
-      const slide = scrollRef.current.children[0] as HTMLElement;
-      const slideWidth = slide.offsetWidth + 20;
-      const currentScroll = scrollRef.current.scrollLeft;
-      
-      isScrollingRef.current = true;
-      
-      const targetScroll = direction === 'next' 
-        ? currentScroll + slideWidth 
-        : currentScroll - slideWidth;
-      
-      scrollRef.current.scrollTo({
-        left: targetScroll,
-        behavior: 'smooth'
-      });
+    if (!scrollRef.current || isScrollingRef.current) return;
 
-      // Clear the scrolling flag after the animation completes
-      setTimeout(() => {
-        isScrollingRef.current = false;
-        // After manual move, check if we need a silent jump to stay in the middle set
-        if (scrollRef.current) {
-          const { scrollLeft } = scrollRef.current;
-          const totalWidth = slideWidth * totalSlides;
-          if (scrollLeft < slideWidth * totalSlides || scrollLeft >= slideWidth * totalSlides * 2) {
-             const normalizedScroll = (scrollLeft % totalWidth) + totalWidth;
-             scrollRef.current.style.scrollBehavior = 'auto';
-             scrollRef.current.scrollLeft = normalizedScroll;
-             scrollRef.current.style.scrollBehavior = 'smooth';
-          }
-        }
-      }, 600); // Matches standard smooth scroll duration
-    }
+    const track = scrollRef.current;
+    const slideWidth = getSlideWidth();
+    const currentScroll = track.scrollLeft;
+
+    isScrollingRef.current = true;
+    track.style.scrollBehavior = 'smooth';
+
+    // Target the next slide's exact offset
+    const targetScroll = direction === 'next'
+      ? Math.round((currentScroll + slideWidth) / slideWidth) * slideWidth
+      : Math.round((currentScroll - slideWidth) / slideWidth) * slideWidth;
+
+    track.scrollLeft = targetScroll;
+
+    // Allow animation to finish before resetting flag and checking jump
+    setTimeout(() => {
+      isScrollingRef.current = false;
+      handleSilentJump();
+    }, 800);
   };
 
   return (
@@ -152,8 +175,8 @@ const LatestDrops = () => {
       {/* Pagination Dots */}
       <div className={styles.pagination}>
         {SLIDES.map((_, i) => (
-          <div 
-            key={i} 
+          <div
+            key={i}
             className={`${styles.dot} ${i === activeIndex ? styles.active : ''}`}
           ></div>
         ))}
@@ -202,10 +225,10 @@ const LatestDrops = () => {
         </div>
       </div>
 
-      <h2 className={styles.sectionTitle}>Latest Drops</h2>
+      <h2 className={styles.sectionTitle}>LATEST DROPS</h2>
 
       <div className={styles.bannerContainer}>
-        <button 
+        <button
           className={`${styles.navArrow} ${styles.prev}`}
           onClick={() => scrollToSlide('prev')}
         >
@@ -214,20 +237,23 @@ const LatestDrops = () => {
           </svg>
         </button>
 
-        <div 
-          className={styles.scrollTrack} 
-          ref={scrollRef} 
+        <div
+          className={styles.scrollTrack}
+          ref={scrollRef}
           onScroll={handleScroll}
         >
           {loopSlides.map((slide, idx) => (
             <div key={`${slide.id}-${idx}`} className={styles.bannerSlide}>
-              <Image 
-                src={slide.image} 
-                alt={slide.title} 
-                fill
-                className={styles.bannerImage}
-                style={slide.grayscale ? { filter: 'grayscale(1) brightness(0.7)' } : {}}
-              />
+              <div className={styles.imageWrapper}>
+                <Image
+                  src={slide.image}
+                  alt={slide.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 95vw"
+                  className={styles.bannerImage}
+                  style={slide.grayscale ? { filter: 'grayscale(1) brightness(0.7)' } : {}}
+                />
+              </div>
               <div className={styles.bannerOverlay}>
                 <div className={`${styles.textGroup} ${styles.left}`}>
                   <div className={styles.logoAndText}>
@@ -253,7 +279,7 @@ const LatestDrops = () => {
           ))}
         </div>
 
-        <button 
+        <button
           className={`${styles.navArrow} ${styles.next}`}
           onClick={() => scrollToSlide('next')}
         >

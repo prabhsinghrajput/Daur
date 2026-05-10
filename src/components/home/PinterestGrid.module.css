@@ -160,20 +160,38 @@
 }
 
 @media (max-width: 768px) {
+  .section {
+    padding: 2rem 0;
+  }
+
+  .scrollWrapper {
+    height: 400px;
+    padding: 0 1rem;
+    overflow-x: auto;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .card {
-    height: 450px;
-    border-radius: 40px;
+    flex: 0 0 140px; /* Fixed width on mobile */
+    height: 100%;
+    border-radius: 30px;
   }
 
-  .small {
-    width: 180px;
+  .card:hover {
+    flex: 0 0 240px;
   }
 
-  .medium {
-    width: 240px;
+  .bottomOverlay {
+    padding: 1rem;
   }
 
-  .large {
-    width: 320px;
+  .cardTitle {
+    font-size: 1rem;
+  }
+
+  .cardDesc {
+    font-size: 0.75rem;
+    max-width: 150px;
   }
 }

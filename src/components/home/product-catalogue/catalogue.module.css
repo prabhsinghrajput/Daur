@@ -335,11 +335,41 @@
 }
 
 @media (max-width: 1024px) {
+  .leftPanel {
+    padding: 3rem 1.5rem;
+    order: 2;
+    text-align: center;
+    align-items: center;
+  }
+  .topRow { justify-content: center; gap: 2rem; }
+  .productName { font-size: 32px; }
+  .ctaRow { width: 100%; }
+}
+
+@media (max-width: 768px) {
+  .container {
+    display: block;
+    height: auto;
+  }
+  .rightPanel {
+    height: 50vh;
+    padding: 1rem;
+    order: 1;
+  }
+  .leftPanel {
+    padding: 2.5rem 1.5rem;
+    order: 2;
+  }
+  .description {
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+  }
   .counter {
-    top: 1.5rem;
-    right: 1.5rem;
+    top: 1rem;
+    right: 1rem;
+    font-size: 12px;
   }
   .progressRow {
-    padding: 0 1.5rem;
+    padding: 0 1rem;
   }
 }

@@ -16,9 +16,10 @@ const BrandDifference = () => {
           <div className={styles.leftSide}>
             <div className={styles.modelWrapper}>
               <Image 
-                src="/images/active/active1.png" 
+                src="/images/brand-difference/main.png" 
                 alt="Model showcasing DAUR ACTIVE collection" 
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className={styles.modelImage}
               />
               
@@ -39,7 +40,7 @@ const BrandDifference = () => {
               <div className={styles.textureWrapper}>
                 <div className={styles.textureBadge}>Shell</div>
                 <Image 
-                  src="/images/active/active2.png" 
+                  src="/images/brand-difference/1.png" 
                   alt="Technical shell fabric detail" 
                   width={150}
                   height={150}
@@ -56,7 +57,7 @@ const BrandDifference = () => {
               <div className={styles.textureWrapper}>
                 <div className={styles.textureBadge}>Mesh</div>
                 <Image 
-                  src="/images/active/active3.png" 
+                  src="/images/brand-difference/2.png" 
                   alt="Cooling mesh detail" 
                   width={150}
                   height={150}
@@ -73,7 +74,7 @@ const BrandDifference = () => {
               <div className={styles.textureWrapper}>
                 <div className={styles.textureBadge}>Knit</div>
                 <Image 
-                  src="/images/active/active4.png" 
+                  src="/images/brand-difference/3.png" 
                   alt="Compression knit detail" 
                   width={150}
                   height={150}

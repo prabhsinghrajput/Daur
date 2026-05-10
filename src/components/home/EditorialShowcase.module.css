@@ -129,28 +129,49 @@
 }
 
 @media (max-width: 1024px) {
+  .section {
+    height: auto;
+    padding: 1rem;
+  }
+
+  .container {
+    height: auto;
+    padding: 4rem 2rem;
+    min-height: auto;
+  }
+
   .grid {
     grid-template-columns: 1fr;
-    gap: 6rem;
+    gap: 4rem;
+    height: auto;
   }
 
   .bgText {
     font-size: 60vw;
+    top: 30%;
   }
 
-  .container {
-    padding: 6rem 4vw;
-    min-height: auto;
+  .column {
+    align-items: center !important;
+    text-align: center;
+    gap: 2rem;
   }
 
   .column:first-child,
   .column:last-child {
     align-self: center;
     margin: 0;
+    width: 100%;
   }
 
   .column:first-child .imageWrapper,
   .column:last-child .imageWrapper {
     width: 100%;
+    max-width: 320px;
+  }
+
+  .caption {
+    max-width: 100%;
+    font-size: 1.2rem;
   }
 }

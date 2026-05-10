@@ -16,16 +16,16 @@
   height: 90vh;
   background-color: #ffffff;
   border-radius: 40px;
-  padding: 4rem 6vw;
+  padding: 0rem 6vw;
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .bgText {
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: 'Bodoni Moda', serif;
@@ -101,7 +101,7 @@
   border: 2px solid #fff;
   border-radius: 50%;
   z-index: 10;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .line {
@@ -219,15 +219,54 @@
     height: auto;
     overflow-y: auto;
   }
+
   .container {
     height: auto;
     min-height: 90vh;
     padding: 3rem 5vw;
   }
+
   .section {
     height: auto;
     min-height: 100vh;
   }
-  .line, .point { display: none; }
+
+  .line,
+  .point {
+    display: none;
+  }
 }
 
+@media (max-width: 768px) {
+  .section {
+    height: auto;
+    padding: 1rem 0;
+  }
+  .container {
+    height: auto;
+    border-radius: 0;
+    padding: 3rem 1rem;
+  }
+  .title {
+    font-size: 2.2rem;
+  }
+  .content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .rightSide {
+    gap: 2rem;
+  }
+  .detailItem {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  .textureWrapper {
+    width: 100px;
+    height: 100px;
+  }
+  .bgText {
+    display: none;
+  }
+}

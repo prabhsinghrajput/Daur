@@ -8,9 +8,11 @@
   align-items: center;
   padding: 1.2rem 5vw;
   z-index: 100;
-  background-color: #fff;
-  border-bottom: 1px solid #e0e0e0;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
 }
 
 .navSection {
@@ -109,13 +111,15 @@
 }
 
 .bagIcon,
-.heartIcon {
+.heartIcon,
+.userIcon {
   color: #000;
   transition: opacity 0.2s, color 0.2s;
 }
 
 .bagWrapper:hover .bagIcon,
-.bagWrapper:hover .heartIcon {
+.bagWrapper:hover .heartIcon,
+.bagWrapper:hover .userIcon {
   opacity: 0.6;
 }
 
@@ -123,4 +127,27 @@
   color: #ff4444;
 }
 
+@media (max-width: 768px) {
+  .nav {
+    padding: 0.8rem 5vw;
+  }
 
+  .navSection:first-child {
+    display: none;
+  }
+
+  .navLogo {
+    font-size: 1.5rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .rightControls {
+    gap: 1rem;
+  }
+
+  .searchBox {
+    display: none;
+  }
+}

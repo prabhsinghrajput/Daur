@@ -1,0 +1,273 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal {
+  background: white;
+  width: 100%;
+  max-width: 850px;
+  height: 500px;
+  border-radius: 24px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 10;
+  color: #888;
+  transition: color 0.3s ease;
+}
+
+.closeBtn:hover {
+  color: #000;
+}
+
+.leftSide {
+  flex: 1;
+  background: #000;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  text-align: center;
+}
+
+.logo {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  font-weight: 500;
+  letter-spacing: 4px;
+  margin-bottom: 10px;
+}
+
+.leftSide h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.rightSide {
+  flex: 1.1;
+  background: #fff;
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.formContent {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.formContent h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #111;
+  text-align: center;
+}
+
+.subtext {
+  font-size: 0.95rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 20px;
+}
+
+.countryCode {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  border-right: 1px solid #eee;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.countryCode img {
+  width: 22px;
+  border-radius: 2px;
+}
+
+.inputWrapper input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 12px 15px;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.disclaimer {
+  font-size: 0.75rem;
+  color: #888;
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+.disclaimer span {
+  color: #666;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 16px;
+  background: #eee;
+  color: #999;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: not-allowed;
+  transition: all 0.3s ease;
+}
+
+.submitBtn:not(:disabled) {
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+.troubleLink {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  color: #4466ff;
+  font-size: 0.85rem;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+/* OTP Styles */
+.otpGrid {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.otpInput {
+  width: 50px;
+  height: 60px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.otpInput:focus {
+  border-color: #000;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.05);
+}
+
+.resendText {
+  font-size: 0.85rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.editLink {
+  color: #28a745;
+  cursor: pointer;
+  margin-left: 5px;
+  border: 1px solid #28a745;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+/* Success Styles */
+.successContent {
+  text-align: center;
+}
+
+.confetti {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.successContent h1 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.loader {
+  width: 100%;
+  height: 4px;
+  background: #eee;
+  border-radius: 2px;
+  margin: 30px 0 10px;
+  overflow: hidden;
+}
+
+.loaderBar {
+  height: 100%;
+  background: #000;
+  width: 0;
+  animation: loading 2s linear forwards;
+}
+
+@keyframes loading {
+  to { width: 100%; }
+}
+
+.loaderText {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+@media (max-width: 768px) {
+  .modal {
+    flex-direction: column;
+    height: auto;
+    max-height: 90vh;
+  }
+  .leftSide {
+    display: none;
+  }
+  .rightSide {
+    padding: 40px 30px;
+  }
+}
