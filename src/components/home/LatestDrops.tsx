@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import styles from './LatestDrops.module.css';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 
 const SLIDES = [
   {
@@ -10,7 +11,6 @@ const SLIDES = [
     subtitle: 'Straight From',
     sideTitle: 'Himalayan Art',
     sideSubtitle: 'Expressed Through Intricate',
-    hasLogo: true
   },
   {
     id: 2,
@@ -19,7 +19,6 @@ const SLIDES = [
     subtitle: 'New Season',
     sideTitle: 'Minimalist Elegance',
     sideSubtitle: 'Defined By',
-    hasLogo: false
   },
   {
     id: 3,
@@ -28,7 +27,6 @@ const SLIDES = [
     subtitle: 'Collection 01',
     sideTitle: 'Structured Tones',
     sideSubtitle: 'Featuring Bold',
-    hasLogo: false
   },
   {
     id: 4,
@@ -37,7 +35,6 @@ const SLIDES = [
     subtitle: 'Artisanal Series',
     sideTitle: 'Ancient Techniques',
     sideSubtitle: 'Woven With',
-    hasLogo: false
   },
   {
     id: 5,
@@ -46,7 +43,6 @@ const SLIDES = [
     subtitle: 'Winter 2024',
     sideTitle: 'Shadow & Light',
     sideSubtitle: 'The Play Of',
-    hasLogo: false
   },
   {
     id: 6,
@@ -55,238 +51,203 @@ const SLIDES = [
     subtitle: 'The Art Of',
     sideTitle: 'Kathmandu',
     sideSubtitle: 'Handmade In',
-    hasLogo: false,
-    grayscale: true
   }
 ];
 
+const variants: Variants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? '100%' : '-100%',
+    opacity: 0,
+    scale: 1.1
+  }),
+  center: {
+    zIndex: 1,
+    x: 0,
+    opacity: 1,
+    scale: 1,
+    transition: {
+      x: { type: "spring", stiffness: 300, damping: 30, mass: 0.8 },
+      opacity: { duration: 0.6 },
+      scale: { duration: 1.2, ease: [0.33, 1, 0.68, 1] }
+    }
+  },
+  exit: (direction: number) => ({
+    zIndex: 0,
+    x: direction < 0 ? '100%' : '-100%',
+    opacity: 0,
+    scale: 0.9,
+    transition: {
+      x: { type: "spring", stiffness: 300, damping: 30, mass: 0.8 },
+      opacity: { duration: 0.4 }
+    }
+  })
+};
+
 const LatestDrops = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const isScrollingRef = useRef(false);
-  const totalSlides = SLIDES.length;
+  const [[page, direction], setPage] = useState([0, 0]);
+  const activeIndex = (page % SLIDES.length + SLIDES.length) % SLIDES.length;
 
-  // We use 3 sets of slides for seamless looping
-  const loopSlides = [...SLIDES, ...SLIDES, ...SLIDES];
-
-  const getSlideWidth = () => {
-    if (scrollRef.current && scrollRef.current.children.length > 0) {
-      return (scrollRef.current.children[0] as HTMLElement).offsetWidth;
-    }
-    return 0;
-  };
-
-  const handleSilentJump = () => {
-    if (!scrollRef.current) return;
-    const slideWidth = getSlideWidth();
-    const { scrollLeft } = scrollRef.current;
-    const totalWidth = slideWidth * totalSlides;
-
-    if (scrollLeft < totalWidth * 0.5) {
-      scrollRef.current.style.scrollBehavior = 'auto';
-      scrollRef.current.scrollLeft = scrollLeft + totalWidth;
-    } else if (scrollLeft > totalWidth * 2.5) {
-      scrollRef.current.style.scrollBehavior = 'auto';
-      scrollRef.current.scrollLeft = scrollLeft - totalWidth;
-    }
-  };
+  const paginate = useCallback((newDirection: number) => {
+    setPage([page + newDirection, newDirection]);
+  }, [page]);
 
   useEffect(() => {
-    const track = scrollRef.current;
-    if (!track) return;
-
-    // Initial position: start of the middle set
-    const init = () => {
-      const slideWidth = getSlideWidth();
-      if (track && slideWidth > 0) {
-        track.style.scrollBehavior = 'auto';
-        track.scrollLeft = slideWidth * totalSlides;
-      }
-    };
-
-    const timer = setTimeout(init, 200);
-
-    // Auto-scroll logic
-    const interval = setInterval(() => {
-      if (!isScrollingRef.current) {
-        scrollToSlide('next');
-      }
-    }, 5000);
-
-    const handleResize = () => {
-      if (track) {
-        track.style.scrollBehavior = 'auto';
-        init();
-      }
-    };
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      clearTimeout(timer);
-      clearInterval(interval);
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [totalSlides]);
-
-  const handleScroll = () => {
-    if (!scrollRef.current) return;
-
-    const { scrollLeft } = scrollRef.current;
-    const slideWidth = getSlideWidth();
-    if (slideWidth === 0) return;
-
-    // Calculate active index for dots based on scroll position
-    const relativeScroll = scrollLeft % (slideWidth * totalSlides);
-    const index = Math.round(relativeScroll / slideWidth);
-    setActiveIndex(index % totalSlides);
-
-    // Continuous jump check for manual scrolling (only when not animating)
-    if (!isScrollingRef.current) {
-      handleSilentJump();
-    }
-  };
-
-  const scrollToSlide = (direction: 'prev' | 'next') => {
-    if (!scrollRef.current || isScrollingRef.current) return;
-
-    const track = scrollRef.current;
-    const slideWidth = getSlideWidth();
-    const currentScroll = track.scrollLeft;
-
-    isScrollingRef.current = true;
-    track.style.scrollBehavior = 'smooth';
-
-    // Target the next slide's exact offset
-    const targetScroll = direction === 'next'
-      ? Math.round((currentScroll + slideWidth) / slideWidth) * slideWidth
-      : Math.round((currentScroll - slideWidth) / slideWidth) * slideWidth;
-
-    track.scrollLeft = targetScroll;
-
-    // Allow animation to finish before resetting flag and checking jump
-    setTimeout(() => {
-      isScrollingRef.current = false;
-      handleSilentJump();
-    }, 800);
-  };
+    const timer = setInterval(() => paginate(1), 8000);
+    return () => clearInterval(timer);
+  }, [paginate]);
 
   return (
     <section className={styles.latestDrops}>
-      {/* Pagination Dots */}
       <div className={styles.pagination}>
         {SLIDES.map((_, i) => (
-          <div
-            key={i}
-            className={`${styles.dot} ${i === activeIndex ? styles.active : ''}`}
-          ></div>
+          <div key={i} className={styles.dot}>
+            {i === activeIndex && (
+              <motion.div
+                className={styles.dotActiveBar}
+                initial={{ scaleY: 0 }}
+                animate={{ scaleY: 1 }}
+                transition={{ duration: 8, ease: "linear" }}
+              />
+            )}
+          </div>
         ))}
       </div>
 
       {/* Feature Bar */}
+      {/* Feature Bar */}
       <div className={styles.featureBar}>
-        <div className={styles.featureItem}>
-          <div className={styles.featureIcon}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-            </svg>
-          </div>
-          <div>
-            <strong>10% Cashback</strong>
-            on all App orders
-          </div>
-        </div>
-        <div className={styles.featureItem}>
-          <div className={styles.featureIcon}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 8l-2-2H5L3 8v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8z" />
-              <path d="M3 8h18" />
-              <path d="M10 12l-2 2 2 2" />
-              <path d="M14 16l2-2-2-2" />
-            </svg>
-          </div>
-          <div>
-            <strong>30 days Easy Returns</strong>
-            & Exchanges
-          </div>
-        </div>
-        <div className={styles.featureItem}>
-          <div className={styles.featureIcon}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="1" y="3" width="15" height="13" />
-              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
-              <circle cx="5.5" cy="18.5" r="2.5" />
-              <circle cx="18.5" cy="18.5" r="2.5" />
-            </svg>
-          </div>
-          <div>
-            <strong>Free &</strong>
-            Fast Shipping
-          </div>
-        </div>
+        {[
+          { icon: 'M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6', title: '10% Cashback', subtitle: 'on App orders' },
+          { icon: 'M21 8l-2-2H5L3 8v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8z M3 8h18', title: '30 days returns', subtitle: '& Exchanges' },
+          { icon: 'M1 3h15v13H1V3z M16 8h4l3 3v5h-7V8z', title: 'Free &', subtitle: 'Fast Shipping' }
+        ].map((feature, idx) => (
+          <motion.div
+            key={idx}
+            className={styles.featureItem}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              delay: idx * 0.1
+            }}
+          >
+            <div className={styles.featureIcon}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                {feature.icon.split(' M').map((path, i) => (
+                  <path key={i} d={path.startsWith('M') ? path : 'M' + path} />
+                ))}
+              </svg>
+            </div>
+            <div className={styles.featureText}>
+              <strong>{feature.title}</strong>
+              <span>{feature.subtitle}</span>
+            </div>
+          </motion.div>
+        ))}
       </div>
 
-      <h2 className={styles.sectionTitle}>LATEST DROPS</h2>
+      <div className={styles.sectionTitle}>
+        LATEST DROPS
+      </div>
 
       <div className={styles.bannerContainer}>
-        <button
-          className={`${styles.navArrow} ${styles.prev}`}
-          onClick={() => scrollToSlide('prev')}
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
-        </button>
-
-        <div
-          className={styles.scrollTrack}
-          ref={scrollRef}
-          onScroll={handleScroll}
-        >
-          {loopSlides.map((slide, idx) => (
-            <div key={`${slide.id}-${idx}`} className={styles.bannerSlide}>
-              <div className={styles.imageWrapper}>
-                <Image
-                  src={slide.image}
-                  alt={slide.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 95vw"
-                  className={styles.bannerImage}
-                  style={slide.grayscale ? { filter: 'grayscale(1) brightness(0.7)' } : {}}
-                />
-              </div>
+        <div className={styles.scrollTrack} style={{ overflow: 'visible' }}>
+          <AnimatePresence initial={false} custom={direction}>
+            <motion.div
+              key={page}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              className={styles.bannerSlide}
+              style={{ position: 'absolute' }}
+            >
+              {/* Background Text Overlay */}
               <div className={styles.bannerOverlay}>
-                <div className={`${styles.textGroup} ${styles.left}`}>
-                  <div className={styles.logoAndText}>
-                    {slide.hasLogo && (
-                      <div className={styles.pfwLogo}>
-                        <span>P</span>
-                        <span>W</span>
-                        <span className={styles.pfwF}>F</span>
-                      </div>
-                    )}
-                    <div>
-                      <span className={styles.smallLabel}>{slide.subtitle}</span>
-                      <span className={styles.mainLabel}>{slide.title}</span>
-                    </div>
-                  </div>
-                </div>
-                <div className={`${styles.textGroup} ${styles.right}`}>
-                  <span className={styles.smallLabel}>{slide.sideSubtitle}</span>
-                  <span className={styles.mainLabel}>{slide.sideTitle}</span>
-                </div>
+                <motion.div
+                  className={`${styles.textGroup} ${styles.left}`}
+                  initial={{ x: -100, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
+                >
+                  <span className={styles.smallLabel}>{SLIDES[activeIndex].subtitle}</span>
+                  <h2 className={styles.mainLabel}>{SLIDES[activeIndex].title}</h2>
+                </motion.div>
+
+                <motion.div
+                  className={`${styles.textGroup} ${styles.right}`}
+                  initial={{ x: 100, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+                >
+                  <span className={styles.smallLabel}>{SLIDES[activeIndex].sideSubtitle}</span>
+                  <h2 className={styles.mainLabel}>{SLIDES[activeIndex].sideTitle}</h2>
+                </motion.div>
               </div>
-            </div>
-          ))}
+
+              {/* Main Masked Image */}
+              <motion.div
+                className={styles.mainImageWrapper}
+              >
+                <motion.div
+                  animate={{ scale: [1, 1.1] }}
+                  transition={{ duration: 10, repeat: Infinity, repeatType: "mirror" }}
+                  style={{ width: '100%', height: '100%', position: 'relative' }}
+                >
+                  <Image
+                    src={SLIDES[activeIndex].image}
+                    alt={SLIDES[activeIndex].title}
+                    fill
+                    priority
+                    className={styles.bannerImage}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                  />
+                </motion.div>
+              </motion.div>
+
+              {/* Detail Floating Image */}
+              <motion.div
+                className={styles.detailImageWrapper}
+                initial={{ y: 100, opacity: 0, rotate: 10 }}
+                animate={{ y: 0, opacity: 1, rotate: -5 }}
+                transition={{ delay: 0.6, duration: 1.2, ease: [0.33, 1, 0.68, 1] }}
+              >
+                <Image
+                  src={SLIDES[activeIndex].image}
+                  alt={`${SLIDES[activeIndex].title} detail`}
+                  fill
+                  className={styles.bannerImage}
+                  style={{ transform: 'scale(1.5)', objectPosition: 'center 20%' }}
+                  sizes="(max-width: 768px) 50vw, 300px"
+                />
+              </motion.div>
+            </motion.div>
+          </AnimatePresence>
         </div>
 
-        <button
-          className={`${styles.navArrow} ${styles.next}`}
-          onClick={() => scrollToSlide('next')}
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
-        </button>
+        <div className={styles.navArrow}>
+          <button
+            className={styles.arrowBtn}
+            onClick={() => paginate(-1)}
+            aria-label="Previous slide"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button
+            className={styles.arrowBtn}
+            onClick={() => paginate(1)}
+            aria-label="Next slide"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
       </div>
     </section>
   );

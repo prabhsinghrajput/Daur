@@ -1,8 +1,7 @@
 .section {
   width: 100%;
-  height: 100vh;
-  padding: 2rem 4vw;
-  background-color: #f5f5f5;
+  padding: 8rem 4vw;
+  background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,18 +11,9 @@
 
 .container {
   width: 100%;
-  max-width: 1400px;
-  height: 90vh;
-  background-color: #e5e7eb;
-  border-radius: 40px;
-  padding: 4rem 6vw;
+  max-width: 1500px;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
-
 
 .bgText {
   position: absolute;
@@ -31,147 +21,220 @@
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: 'Bodoni Moda', serif;
-  font-size: 30vw;
+  font-size: 35vw;
   font-weight: 900;
-  color: #1a1a1a;
-  /* Darker tone for premium feel */
-  opacity: 0.1;
-  /* Very subtle */
+  color: #000;
+  opacity: 0.02; /* Extremely subtle */
   pointer-events: none;
   white-space: nowrap;
   letter-spacing: -0.05em;
-  z-index: 5;
-}
-
-
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1.7fr 1fr;
-  gap: 4rem;
-  width: 100%;
-  height: 100%;
-  align-items: stretch;
-}
-
-
-.column {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  position: relative;
   z-index: 1;
 }
 
-.column:first-child {
-  align-self: stretch;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.column:last-child {
-  align-self: stretch;
-  justify-content: space-between;
-  align-items: flex-end;
-}
-
-.column:nth-child(2) {
-  align-self: center;
-  justify-content: center;
-  z-index: 10;
-}
-
-
-
-
-
-.imageWrapper {
+.editorialGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr; /* More balanced ratio */
+  gap: 5vw;
   position: relative;
-  width: 100%;
-  aspect-ratio: 3/4;
-  border-radius: 24px;
-  overflow: hidden;
+  z-index: 2;
+  align-items: flex-start; /* Start from top for better control */
+}
+
+/* Common Elements */
+.index {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: #999;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.index::after {
+  content: '';
+  width: 40px;
+  height: 1px;
   background-color: #ddd;
 }
 
-/* Side images smaller */
-.column:first-child .imageWrapper,
-.column:last-child .imageWrapper {
-  width: 85%;
-}
-
-/* Middle column stays on top of everything */
-.column:nth-child(2) {
-  z-index: 10;
-}
-
-.centerImage {
-  aspect-ratio: 4/5;
-  border-radius: 32px;
+.fullSize {
   width: 100%;
+  height: 100%;
+  position: relative;
 }
-
 
 .image {
   object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.caption {
+/* Left Column */
+.mainFeature {
+  display: flex;
+  flex-direction: column;
+  padding-top: 8rem; /* Perfectly aligned with Column II */
+}
+
+.mainImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5.5;
+  overflow: visible;
+  border: 1px solid #eee;
+  padding: 8px;
+}
+
+.detailCrop {
+  position: absolute;
+  bottom: -40px;
+  right: -30px;
+  width: 160px;
+  height: 220px;
+  overflow: hidden;
+  box-shadow: 40px 40px 80px rgba(0,0,0,0.08);
+  z-index: 10;
+  border: 1px solid #eee;
+  background: #fff;
+}
+
+.featureMeta {
+  margin-top: 4rem;
+}
+
+.metaTitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #111;
+  text-transform: uppercase;
+}
+
+.metaDesc {
   font-family: 'Bodoni Moda', serif;
   font-size: 1.5rem;
-  line-height: 1.4;
-  color: #1a1a1a;
-  max-width: 260px;
+  line-height: 1.3;
+  max-width: 280px;
+  color: #000;
+  font-weight: 400;
 }
 
+/* Center Column */
+.centerFeature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-.topCaption {
-  margin-bottom: 2rem;
+.editorialTitle {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.titleLabel {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.8rem;
+  color: #999;
+  text-transform: uppercase;
+}
+
+.titleMain {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 4rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #000;
+  text-transform: uppercase;
+}
+
+.centerImageWrapper {
+  width: 100%;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  border: 1px solid #eee;
+  padding: 10px;
+}
+
+/* Right Column */
+.sideColumn {
+  display: flex;
+  flex-direction: column;
+  padding-top: 8rem; /* Perfectly aligned with Column I */
+}
+
+.sideDescription {
+  margin-bottom: 3rem;
+}
+
+.sideDescription p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: #666;
+  max-width: 260px;
+  letter-spacing: 0.01em;
+}
+
+.sideImageWrapper {
+  width: 100%;
+  aspect-ratio: 4/6;
+  overflow: hidden;
+  border: 1px solid #eee;
+  padding: 8px;
+}
+
+.brandBadge {
+  margin-top: 5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.badgeLine {
+  width: 60px;
+  height: 1px;
+  background-color: #000;
+}
+
+.badgeText {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  color: #000;
 }
 
 @media (max-width: 1024px) {
   .section {
-    height: auto;
-    padding: 1rem;
+    padding: 6rem 5vw;
   }
-
-  .container {
-    height: auto;
-    padding: 4rem 2rem;
-    min-height: auto;
-  }
-
-  .grid {
+  
+  .editorialGrid {
     grid-template-columns: 1fr;
-    gap: 4rem;
-    height: auto;
+    gap: 10rem;
   }
 
-  .bgText {
-    font-size: 60vw;
-    top: 30%;
+  .detailCrop {
+    display: none;
   }
 
-  .column {
-    align-items: center !important;
-    text-align: center;
-    gap: 2rem;
+  .titleMain {
+    font-size: 3rem;
   }
 
-  .column:first-child,
-  .column:last-child {
-    align-self: center;
-    margin: 0;
-    width: 100%;
-  }
-
-  .column:first-child .imageWrapper,
-  .column:last-child .imageWrapper {
-    width: 100%;
-    max-width: 320px;
-  }
-
-  .caption {
+  .metaDesc {
     max-width: 100%;
-    font-size: 1.2rem;
+  }
+
+  .sideDescription p {
+    max-width: 100%;
   }
 }

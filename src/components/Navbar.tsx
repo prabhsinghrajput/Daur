@@ -2,18 +2,32 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import styles from './Navbar.module.css';
 import LoginModal from './auth/LoginModal';
 
-export default function Navbar() {
+import { motion } from 'framer-motion';
+
+interface NavbarProps {
+  hideLogo?: boolean;
+}
+
+export default function Navbar({ hideLogo = false }: NavbarProps) {
   const { cartCount } = useCart();
   const { wishlistCount } = useWishlist();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   const handleProfileClick = () => {
     if (isLoggedIn) {
@@ -33,7 +47,22 @@ export default function Navbar() {
           <Link href="/about" className={styles.navLink}>About</Link>
         </div>
 
-        <Link href="/" className={styles.navLogo}>DAUR</Link>
+        {!hideLogo && (
+          <Link href="/" className={styles.navLogo} onClick={handleLogoClick}>
+            <motion.img 
+              layoutId="main-logo"
+              src="/images/hero/logo.png" 
+              alt="DAUR" 
+              className={styles.logoImg} 
+              transition={{ 
+                type: "spring", 
+                stiffness: 100, 
+                damping: 20,
+                duration: 1.2
+              }}
+            />
+          </Link>
+        )}
 
         <div className={styles.navSection}>
           <div className={styles.rightControls}>

@@ -9,15 +9,25 @@ import EditorialShowcase from '../components/home/EditorialShowcase';
 import WorkoutShowcase from '../components/home/WorkoutShowcase';
 import PinterestGrid from '../components/home/PinterestGrid';
 import BrandDifference from '../components/home/BrandDifference';
-
 import Footer from '../components/home/Footer';
 import ProductCatalogueSection from '../components/home/product-catalogue';
 import type { Product } from '../components/home/product-catalogue/products.data';
+import Preloader from '../components/Preloader';
+import { AnimatePresence } from 'framer-motion';
+
+// Global variable to track if preloader has already been shown in this session
+let preloaderShown = false;
 
 export default function Home() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const trackRef = useRef<HTMLDivElement>(null);
   const [activeProduct, setActiveProduct] = useState<Product | null>(null);
+  const [isLoading, setIsLoading] = useState(!preloaderShown);
+
+  const handlePreloaderComplete = () => {
+    setIsLoading(false);
+    preloaderShown = true;
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,7 +53,13 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <Navbar />
+      <AnimatePresence mode="wait">
+        {isLoading && (
+          <Preloader onComplete={handlePreloaderComplete} />
+        )}
+      </AnimatePresence>
+
+      <Navbar hideLogo={isLoading} />
       <Hero trackRef={trackRef} scrollProgress={scrollProgress} activeProduct={activeProduct} />
       <LatestDrops />
       <EditorialShowcase />

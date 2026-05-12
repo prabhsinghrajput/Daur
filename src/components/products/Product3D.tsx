@@ -13,11 +13,16 @@ function Model({ modelPath }: ModelProps) {
   return <primitive object={scene} scale={2.5} />;
 }
 
-export default function Product3D({ modelPath }: { modelPath: string }) {
+export default function Product3D({ modelPath, fallbackImage }: { modelPath: string, fallbackImage?: string }) {
   return (
     <div style={{ width: "100%", height: "100%", position: "relative" }}>
       <Canvas
-        gl={{ antialias: true, alpha: true }}
+        gl={{ 
+          antialias: true, 
+          alpha: true, 
+          powerPreference: "high-performance",
+          failIfMajorPerformanceCaveat: false
+        }}
         style={{ background: "transparent" }}
         dpr={[1, 2]}
       >

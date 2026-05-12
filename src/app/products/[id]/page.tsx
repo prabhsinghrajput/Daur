@@ -21,7 +21,7 @@ const AccordionItem = ({ title, children, defaultOpen = false }: { title: string
     <div className={styles.accordionItem}>
       <button className={styles.accordionHeader} onClick={() => setIsOpen(!isOpen)}>
         <span>{title}</span>
-        <svg 
+        <svg
           width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
           style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s' }}
         >
@@ -52,10 +52,10 @@ interface ProductPageProps {
 export default function ProductPage({ params }: ProductPageProps) {
   const resolvedParams = use(params);
   const productId = parseInt(resolvedParams.id);
-  
+
   // Look for product in all catalogues
-  const product = 
-    products.find(p => p.id === productId) || 
+  const product =
+    products.find(p => p.id === productId) ||
     activeProducts.find(p => p.id === productId) ||
     labsProducts.find(p => (p as any).id === productId);
 
@@ -137,6 +137,16 @@ export default function ProductPage({ params }: ProductPageProps) {
     if (product) setUploadedPhotos([...uploadedPhotos, product.heroImage]);
   };
 
+  const handleNextView = () => {
+    setSelectedView((prev) => (prev + 1) % productViews.length);
+    setShow360(false);
+  };
+
+  const handlePrevView = () => {
+    setSelectedView((prev) => (prev - 1 + productViews.length) % productViews.length);
+    setShow360(false);
+  };
+
 
 
   if (!product) {
@@ -192,8 +202,8 @@ export default function ProductPage({ params }: ProductPageProps) {
           <div className={styles.galleryGrid}>
             <div className={styles.thumbnails}>
               {productViews.map((view, i) => (
-                <div 
-                  key={i} 
+                <div
+                  key={i}
                   className={`${styles.thumb} ${selectedView === i && !show360 ? styles.thumbActive : ''}`}
                   onClick={() => {
                     setSelectedView(i);
@@ -203,7 +213,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                   <img src={view.image} alt={view.label} />
                 </div>
               ))}
-              <div 
+              <div
                 className={`${styles.thumb} ${show360 ? styles.thumbActive : ''}`}
                 onClick={() => setShow360(true)}
               >
@@ -217,8 +227,13 @@ export default function ProductPage({ params }: ProductPageProps) {
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className={styles.galleryImageWrapper}
             >
+
+
               {show360 ? (
-                <Product3D modelPath="/tshirt_model/blue.glb" />
+                <Product3D 
+                  modelPath="/tshirt_model/blue.glb" 
+                  fallbackImage={product.heroImage} 
+                />
               ) : (
                 <motion.img
                   key={productViews[selectedView].image + selectedView}
@@ -232,18 +247,35 @@ export default function ProductPage({ params }: ProductPageProps) {
               )}
 
               {!show360 && (
-                <button
-                  className={styles.view360Btn}
-                  onClick={() => setShow360(true)}
-                >
-                  <div className={styles.btnIcon}>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" />
-                      <path d="M12 6V12L16 14" />
-                    </svg>
+                <>
+                  <button
+                    className={styles.view360Btn}
+                    onClick={() => setShow360(true)}
+                  >
+                    <div className={styles.btnIcon}>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" />
+                        <path d="M12 6V12L16 14" />
+                      </svg>
+                    </div>
+                    <span>360° EXPERIENCE</span>
+                  </button>
+
+                  <div className={styles.galleryControls}>
+                    <button className={styles.arrowBtn} onClick={handlePrevView} aria-label="Previous image">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                      </svg>
+                    </button>
+                    <button className={styles.arrowBtn} onClick={handleNextView} aria-label="Next image">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </button>
                   </div>
-                  <span>360° EXPERIENCE</span>
-                </button>
+                </>
               )}
             </motion.div>
           </div>
@@ -272,8 +304,8 @@ export default function ProductPage({ params }: ProductPageProps) {
               <span className={styles.colorLabel}>Color: {product.color}</span>
               <div className={styles.colorGrid}>
                 {colorVariants.map(variant => (
-                  <Link 
-                    href={`/products/${variant.id}`} 
+                  <Link
+                    href={`/products/${variant.id}`}
                     key={variant.id}
                     className={`${styles.colorSwatch} ${variant.id === product.id ? styles.colorSwatchActive : ''}`}
                     style={{ backgroundColor: variant.accentColor }}
@@ -368,7 +400,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                   </div>
                 </div>
               </AccordionItem>
-              
+
               <AccordionItem title="Composition & Fit">
                 <ul className={styles.detailsList}>
                   <li><strong>Material:</strong> {product.material}</li>
@@ -387,8 +419,8 @@ export default function ProductPage({ params }: ProductPageProps) {
             <div className={styles.tabsContainer} style={{ marginTop: '3rem' }}>
               <div className={styles.tabsHeader}>
                 {['Features', 'Specs'].map(tab => (
-                  <button 
-                    key={tab} 
+                  <button
+                    key={tab}
                     className={`${styles.tabBtn} ${activeTab === tab ? styles.tabBtnActive : ''}`}
                     onClick={() => setActiveTab(tab)}
                     style={{ padding: '0.8rem 1rem', fontSize: '9px' }}
@@ -488,8 +520,8 @@ export default function ProductPage({ params }: ProductPageProps) {
               </div>
               <span className={styles.ratingCount}>based on {reviews.length + 1246} ratings by Verified Buyers</span>
             </div>
-            <button 
-              className={styles.sizeGuideBtn} 
+            <button
+              className={styles.sizeGuideBtn}
               style={{ opacity: 1 }}
               onClick={() => setShowReviewForm(true)}
             >
@@ -532,12 +564,12 @@ export default function ProductPage({ params }: ProductPageProps) {
                   </div>
                   <div className={styles.starRating}>
                     {[1, 2, 3, 4, 5].map(s => (
-                      <svg 
-                        key={s} 
-                        width="14" height="14" 
-                        viewBox="0 0 24 24" 
-                        fill={s <= review.rating ? "currentColor" : "none"} 
-                        stroke="currentColor" 
+                      <svg
+                        key={s}
+                        width="14" height="14"
+                        viewBox="0 0 24 24"
+                        fill={s <= review.rating ? "currentColor" : "none"}
+                        stroke="currentColor"
                         strokeWidth="1"
                         className={s <= review.rating ? styles.starActive : styles.star}
                       >
@@ -563,13 +595,13 @@ export default function ProductPage({ params }: ProductPageProps) {
       {/* REVAMPED REVIEW MODAL */}
       <AnimatePresence>
         {showReviewForm && (
-          <motion.div 
+          <motion.div
             className={styles.modalOverlay}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <motion.div 
+            <motion.div
               className={styles.reviewModal}
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -599,14 +631,14 @@ export default function ProductPage({ params }: ProductPageProps) {
               {/* RIGHT SIDE: PREMIUM FORM */}
               <main className={styles.modalFormSide}>
                 <h2 className={styles.formTitle}>Write a review</h2>
-                
+
                 <form onSubmit={handleReviewSubmit}>
                   <div className={styles.premiumInputGroup}>
                     <span className={styles.premiumLabel}>Overall Rating</span>
                     <div className={styles.starRatingLarge}>
                       {[1, 2, 3, 4, 5].map(s => (
-                        <div 
-                          key={s} 
+                        <div
+                          key={s}
                           onClick={() => setUserRating(s)}
                           className={s <= userRating ? styles.starLargeActive : styles.starLarge}
                         >
@@ -620,9 +652,9 @@ export default function ProductPage({ params }: ProductPageProps) {
 
                   <div className={styles.premiumInputGroup}>
                     <label className={styles.premiumLabel}>Your Name</label>
-                    <input 
-                      type="text" 
-                      className={styles.premiumInput} 
+                    <input
+                      type="text"
+                      className={styles.premiumInput}
                       placeholder="Enter your name"
                       value={userName}
                       onChange={(e) => setUserName(e.target.value)}
@@ -632,8 +664,8 @@ export default function ProductPage({ params }: ProductPageProps) {
 
                   <div className={styles.premiumInputGroup}>
                     <label className={styles.premiumLabel}>Review Details</label>
-                    <textarea 
-                      className={styles.premiumTextarea} 
+                    <textarea
+                      className={styles.premiumTextarea}
                       placeholder="Share your experience with the fit, feel and finish..."
                       value={reviewText}
                       onChange={(e) => setReviewText(e.target.value)}
@@ -677,16 +709,16 @@ export default function ProductPage({ params }: ProductPageProps) {
         </div>
         <div className={styles.recommendedGrid}>
           {recommendedProducts.map(rec => (
-              <Link href={`/products/${rec.id}`} key={rec.id} className={styles.recommendedCard}>
-                <div className={styles.recommendedImageWrapper}>
-                  <img src={rec.heroImage} alt={rec.name} className={styles.recommendedImage} />
-                </div>
-                <div className={styles.recommendedInfo}>
-                  <span className={styles.recName}>{rec.name}</span>
-                  <span className={styles.recPrice}>{rec.price}</span>
-                </div>
-              </Link>
-            ))}
+            <Link href={`/products/${rec.id}`} key={rec.id} className={styles.recommendedCard}>
+              <div className={styles.recommendedImageWrapper}>
+                <img src={rec.heroImage} alt={rec.name} className={styles.recommendedImage} />
+              </div>
+              <div className={styles.recommendedInfo}>
+                <span className={styles.recName}>{rec.name}</span>
+                <span className={styles.recPrice}>{rec.price}</span>
+              </div>
+            </Link>
+          ))}
 
         </div>
       </section>

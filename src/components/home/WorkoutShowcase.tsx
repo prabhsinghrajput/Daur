@@ -1,71 +1,100 @@
 import Image from 'next/image';
 import styles from './WorkoutShowcase.module.css';
+import { motion, Variants } from 'framer-motion';
 
 const WorkoutShowcase = () => {
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.33, 1, 0.68, 1] }
+    }
+  };
+
   return (
     <section className={styles.section}>
-      <div className={styles.container}>
-        {/* Header Row */}
+      <motion.div
+        className={styles.container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={containerVariants}
+      >
+        {/* Header Section */}
         <div className={styles.headerRow}>
-          <div className={styles.headerLeft}>
-            <span className={styles.label}>OUR TOP PICKS</span>
-            <h2 className={styles.title}>
-              TOP WORKOUT GEAR FOR<br />PEAK PERFORMANCE!
-            </h2>
+          <div>
+            <span className={styles.categoryLabel}>CATEGORY</span>
+            <h2 className={styles.mainTitle}>Explore Popular Categories</h2>
           </div>
-          <div className={styles.headerRight}>
-            <p className={styles.description}>
-              Discover the best of our collection, designed to power your workouts all year round
-            </p>
-          </div>
+          <button className={styles.exploreButton}>Explore All Category</button>
         </div>
 
         {/* Image Grid */}
         <div className={styles.grid}>
           {/* Card 1 */}
-          <div className={styles.card}>
-            <div className={styles.imageWrapper}>
-              <Image 
-                src="/images/editorial/editorial1.jpg" 
-                alt="Workout Gear 1" 
+          <motion.div className={`${styles.card} ${styles.cardGreen}`} variants={itemVariants}>
+            <div className={styles.bgBox} />
+
+            <motion.div className={styles.imageWrapper}>
+              <Image
+                src="/images/active/active1.png"
+                alt="Active T-Shirt"
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 768px) 100vw, 33vw"
                 className={styles.image}
+                priority
               />
-              <div className={styles.overlay}>
-                <div className={styles.cardHeader}>
-                  <span className={styles.cardLabel}>01/WINTER _2025</span>
-                </div>
-                <h3 className={styles.cardTitle}>
-                  TOP WORKOUT GEAR FOR<br />PEAK<br /><span className={styles.accent}>PERFORMANCE!</span>
-                </h3>
-              </div>
-            </div>
-          </div>
+            </motion.div>
+            <h3 className={styles.cardTitle}>Active Tees</h3>
+            <button className={styles.shopButton}>Shop Now</button>
+          </motion.div>
 
           {/* Card 2 */}
-          <div className={styles.card}>
-            <div className={styles.imageWrapper}>
-              <Image 
-                src="/images/editorial/editorial3.jpg" 
-                alt="Workout Gear 2" 
+          <motion.div className={`${styles.card} ${styles.cardGrey}`} variants={itemVariants}>
+            <div className={styles.bgBox} />
+
+            <motion.div className={styles.imageWrapper}>
+              <Image
+                src="/images/labs/lab1.png"
+                alt="Lab Series T-Shirt"
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 768px) 100vw, 33vw"
                 className={styles.image}
               />
-              <div className={styles.overlay}>
-                <div className={styles.cardHeader}>
-                  <span className={styles.cardLabel}>02/SUMMER _2025</span>
-                </div>
-                <h3 className={styles.cardTitle}>
-                  LATEST STYLES AND INNOVATIONS IN WORKOUT GEAR.
-                </h3>
-              </div>
-            </div>
-          </div>
+            </motion.div>
+            <h3 className={styles.cardTitle}>Lab Series</h3>
+            <button className={styles.shopButton}>Shop Now</button>
+          </motion.div>
 
+          {/* Card 3 */}
+          <motion.div className={`${styles.card} ${styles.cardPink}`} variants={itemVariants}>
+            <div className={styles.bgBox} />
+
+            <motion.div className={styles.imageWrapper}>
+              <Image
+                src="/images/products/Purple.png"
+                alt="Purple Edition T-Shirt"
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className={styles.image}
+              />
+            </motion.div>
+            <h3 className={styles.cardTitle}>Purple Edition</h3>
+            <button className={styles.shopButton}>Shop Now</button>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
