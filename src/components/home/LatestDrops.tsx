@@ -115,12 +115,12 @@ export default function LatestDrops() {
     });
   };
 
-  const animationLoop = useCallback(() => {
+  function animationLoop() {
     const s = state.current;
     s.currentY = lerp(s.currentY, s.targetY, CONFIG.LERP_FACTOR);
     updatePositions();
     requestRef.current = requestAnimationFrame(animationLoop);
-  }, []);
+  }
 
   useEffect(() => {
     const handleScroll = () => {

@@ -3,6 +3,7 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import styles from './ActiveCatalogue.module.css';
 import { activeProducts } from './activeProducts.data';
+import { Product } from '../../home/product-catalogue/products.data';
 import ProductDetailPanel from '../../home/product-catalogue/ProductDetailPanel';
 import ProductSliderView from '../../home/product-catalogue/ProductSliderView';
 import NavigationControls from '../../home/product-catalogue/NavigationControls';
@@ -66,13 +67,13 @@ export default function ActiveCatalogue() {
       onMouseLeave={resumeTimer}
     >
       <ProductDetailPanel 
-        product={activeProduct as any} 
+        product={activeProduct as unknown as Product} 
         activeIndex={activeIndex} 
       />
       
       <div className={styles.rightPanel}>
         <ProductSliderView 
-          products={activeProducts as any} 
+          products={activeProducts as unknown as Product[]} 
           activeIndex={activeIndex} 
           onThumbClick={handleThumbClick} 
         />

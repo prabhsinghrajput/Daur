@@ -26,7 +26,7 @@ export default function Navbar({ hideLogo = false }: NavbarProps) {
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious();
+    const previous = scrollY.getPrevious() ?? 0;
     if (latest > previous && latest > 150) {
       setIsHidden(true);
     } else {
