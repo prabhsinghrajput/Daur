@@ -8,7 +8,7 @@ import { useWishlist } from '../context/WishlistContext';
 import styles from './Navbar.module.css';
 import LoginModal from './auth/LoginModal';
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 
 interface NavbarProps {
   hideLogo?: boolean;
@@ -18,9 +18,21 @@ export default function Navbar({ hideLogo = false }: NavbarProps) {
   const { cartCount } = useCart();
   const { wishlistCount } = useWishlist();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
+
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious();
+    if (latest > previous && latest > 150) {
+      setIsHidden(true);
+    } else {
+      setIsHidden(false);
+    }
+  });
 
   const handleLogoClick = (e: React.MouseEvent) => {
     if (pathname === '/') {
@@ -39,7 +51,15 @@ export default function Navbar({ hideLogo = false }: NavbarProps) {
 
   return (
     <>
-      <nav className={styles.nav}>
+      <motion.nav 
+        className={styles.nav}
+        variants={{
+          visible: { y: 0 },
+          hidden: { y: "-100%" },
+        }}
+        animate={isHidden ? "hidden" : "visible"}
+        transition={{ duration: 0.35, ease: "easeInOut" }}
+      >
         <div className={styles.navSection}>
           <Link href="/collections" className={styles.navLink}>Collections</Link>
           <Link href="/active" className={styles.navLink}>Active</Link>
@@ -96,7 +116,7 @@ export default function Navbar({ hideLogo = false }: NavbarProps) {
             </div>
           </div>
         </div>
-      </nav>
+      </motion.nav>
 
       <LoginModal 
         isOpen={isLoginModalOpen} 
