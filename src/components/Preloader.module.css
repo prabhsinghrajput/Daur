@@ -4,102 +4,169 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #000;
   z-index: 99999;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
 }
 
-.centerContainer {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Solid white background (animated separately) */
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  background-color: #f9f9f9;
+  z-index: 0;
 }
 
-.bgTextContainer {
+/* Film grain texture */
+.grain {
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 1;
 }
 
-.bgLetter {
+/* Top decorative line */
+.topLine {
   position: absolute;
-  font-family: var(--font-serif);
-  font-size: clamp(100px, 20vw, 350px);
-  font-weight: 900;
-  color: #fff;
-  letter-spacing: -0.05em;
-  white-space: nowrap;
-}
-
-.imageStack {
-  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.15), transparent);
+  transform-origin: left center;
   z-index: 2;
-  width: min(600px, 90vw);
-  height: min(600px, 80vh);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.imageWrapper {
+/* Center stage */
+.centerStage {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  z-index: 3;
+  pointer-events: none;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  background: transparent;
-  padding: 0;
+  justify-content: center;
 }
 
-.sequenceImage {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+.wordRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-.logo {
-  width: 85%;
+.letter {
+  font-family: var(--font-serif);
+  font-size: clamp(5rem, 12vw, 11rem);
+  font-weight: 900;
+  color: #1a1a1a;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  display: inline-block;
+}
+
+/* Logo in the center of DAUR */
+.centerLogo {
+  position: absolute;
+  width: clamp(70px, 12vw, 140px);
   height: auto;
   object-fit: contain;
 }
 
-.counter {
+/* Underline sweep */
+.underline {
+  width: 60%;
+  max-width: 400px;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.3);
+  transform-origin: left center;
+  margin-top: 20px;
+}
+
+/* Bottom bar */
+.bottomBar {
   position: absolute;
-  bottom: 4vh;
+  bottom: 48px;
+  left: 0;
+  right: 0;
+  padding: 0 6vw;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  z-index: 4;
+}
+
+.progressTrack {
+  flex: 1;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  border-radius: 1px;
+}
+
+.progressFill {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  transform-origin: left center;
+}
+
+.counterContainer {
+  flex-shrink: 0;
+}
+
+.counterValue {
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.4);
+  letter-spacing: 0.15em;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Corner text */
+.cornerText {
+  position: absolute;
+  top: 40px;
   right: 6vw;
   font-family: var(--font-serif);
-  font-size: clamp(4rem, 10vw, 8rem);
-  color: #fff;
-  opacity: 0.15;
-  font-weight: 700;
-  font-style: italic;
-  letter-spacing: -0.05em;
+  font-size: 0.7rem;
+  color: rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  z-index: 4;
 }
 
 @media (max-width: 768px) {
-  .bgText {
-    gap: 10rem;
-    font-size: 25vw;
+  .letter {
+    font-size: clamp(3rem, 15vw, 5rem);
   }
-  
-  .imageStack {
-    width: 250px;
-    height: 350px;
+
+  .centerLogo {
+    width: clamp(50px, 15vw, 80px);
   }
-  
-  .counter {
-    font-size: 3rem;
+
+  .bottomBar {
+    bottom: 32px;
+    padding: 0 5vw;
+  }
+
+  .cornerText {
+    top: 24px;
+    right: 5vw;
   }
 }

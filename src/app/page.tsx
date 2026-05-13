@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import styles from './home.module.css';
 import Navbar from '../components/Navbar';
 import Hero from '../components/home/Hero';
@@ -13,7 +13,8 @@ import Footer from '../components/home/Footer';
 import ProductCatalogueSection from '../components/home/product-catalogue';
 import type { Product } from '../components/home/product-catalogue/products.data';
 import Preloader from '../components/Preloader';
-import { AnimatePresence } from 'framer-motion';
+
+import CollectionHighlights from '../components/home/CollectionHighlights';
 
 // Global variable to track if preloader has already been shown in this session
 let preloaderShown = false;
@@ -23,11 +24,16 @@ export default function Home() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [activeProduct, setActiveProduct] = useState<Product | null>(null);
   const [isLoading, setIsLoading] = useState(!preloaderShown);
+  const [showNavbarLogo, setShowNavbarLogo] = useState(preloaderShown);
 
-  const handlePreloaderComplete = () => {
+  const handlePreloaderComplete = useCallback(() => {
     setIsLoading(false);
     preloaderShown = true;
-  };
+  }, []);
+
+  const handleLogoArrived = useCallback(() => {
+    setShowNavbarLogo(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,21 +59,18 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <AnimatePresence mode="wait">
-        {isLoading && (
-          <Preloader onComplete={handlePreloaderComplete} />
-        )}
-      </AnimatePresence>
+      {isLoading && (
+        <Preloader onComplete={handlePreloaderComplete} onLogoArrived={handleLogoArrived} />
+      )}
 
-      <Navbar hideLogo={isLoading} />
-      <Hero trackRef={trackRef} scrollProgress={scrollProgress} activeProduct={activeProduct} />
-      <LatestDrops />
+      <Navbar hideLogo={!showNavbarLogo} />
+      <Hero trackRef={trackRef} scrollProgress={scrollProgress} activeProduct={activeProduct} isLoading={isLoading} />
       <EditorialShowcase />
+      <LatestDrops />
+      <CollectionHighlights />
       <WorkoutShowcase />
-      <PinterestGrid />
-
       <BrandDifference />
-
+      <PinterestGrid />
       <ProductCatalogueSection onActiveChange={(p) => setActiveProduct(p)} />
       <Footer />
     </main>

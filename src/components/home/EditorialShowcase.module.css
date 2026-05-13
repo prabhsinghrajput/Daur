@@ -1,12 +1,13 @@
 .section {
   width: 100%;
-  padding: 8rem 4vw;
+  padding: 5vh 4vw;
   background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   position: relative;
+  min-height: 100vh;
 }
 
 .container {

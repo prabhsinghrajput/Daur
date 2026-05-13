@@ -1,267 +1,58 @@
-.latestDropsTrack {
-  position: relative;
+.bannerSection {
   width: 100%;
-  /* Height determines how long the section stays sticky. 
-     With 4 projects, 400vh is perfect (100vh per project). */
-  height: 400vh;
-  background: #000;
+  background-color: #f9f9f9;
+  overflow: hidden;
 }
 
-.stickyContainer {
-  position: sticky;
-  top: 0;
+.bannerContainer {
+  position: relative;
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
+  height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.parallaxContainer {
-  position: relative;
+.bannerImage {
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  background: #000;
+  object-fit: cover;
+  display: block;
 }
 
-.projectList {
+.bannerOverlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  list-style: none;
-  padding: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 5vw;
+  background: linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 40%);
+}
+
+.bannerTitle {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(2rem, 8vw, 5rem);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: 400;
   margin: 0;
 }
 
-.project {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  will-change: transform;
-}
-
-.project img {
-  width: 100%;
-  height: 140%;
-  object-fit: cover;
-  position: absolute;
-  top: -20%;
-  left: 0;
-  will-change: transform;
-}
-
-.project::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom, 
-    rgba(0,0,0,0.5) 0%, 
-    transparent 40%, 
-    transparent 60%, 
-    rgba(0,0,0,0.7) 100%
-  );
-  pointer-events: none;
-}
-
-.minimap {
-  position: absolute;
-  top: 50%;
-  right: 5%;
-  transform: translateY(-50%);
-  width: 450px;
-  max-width: 90vw;
-  height: 280px;
-  z-index: 100;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-}
-
-.minimapWrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  gap: 2.5rem;
-  align-items: center;
-}
-
-.minimapImgPreview {
-  position: relative;
-  width: 180px;
-  height: 240px;
-  flex-shrink: 0;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-.minimapImgItem {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  will-change: transform;
-}
-
-.minimapImgItem img {
-  width: 100%;
-  height: 130%;
-  object-fit: cover;
-  will-change: transform;
-}
-
-.minimapInfoList {
-  flex: 1;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-}
-
-.minimapItemInfo {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: #fff;
-  will-change: transform;
-  transition: opacity 0.3s ease;
-}
-
-.minimapItemInfoRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 0.75rem;
-}
-
-.minimapItemInfoRow:nth-child(1) p:first-child {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.8rem;
-  opacity: 0.5;
-  letter-spacing: 0.2em;
-}
-
-.minimapItemInfoRow:nth-child(1) p:last-child {
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  line-height: 1;
-}
-
-.minimapItemInfoRow:nth-child(2) {
-  opacity: 0.8;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  border-top: 1px solid rgba(255,255,255,0.15);
-  border-bottom: 1px solid rgba(255,255,255,0.15);
-  padding: 0.6rem 0;
-  margin: 0.5rem 0;
-}
-
-.minimapItemInfoRow:nth-child(3) p {
-  font-size: 0.85rem;
-  line-height: 1.5;
-  opacity: 0.6;
-  font-weight: 300;
-  max-width: 250px;
-}
-
-.sectionLabel {
-  position: absolute;
-  top: 6%;
-  left: 5%;
-  z-index: 100;
-  color: #fff;
-  font-family: var(--font-serif);
-  font-size: clamp(1.5rem, 4vw, 3.5rem);
-  font-weight: 900;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  opacity: 0.9;
-}
-
-.scrollHint {
-  position: absolute;
-  bottom: 6%;
-  left: 5%;
-  z-index: 100;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-  opacity: 0.4;
-}
-
-.scrollLine {
-  width: 60px;
-  height: 1px;
-  background: #fff;
-}
-
-/* RESPONSIVENESS */
-@media (max-width: 1024px) {
-  .minimap {
-    width: 350px;
-  }
-  .minimapImgPreview {
-    width: 140px;
-    height: 190px;
-  }
-  .minimapItemInfoRow:nth-child(1) p:last-child {
-    font-size: 1.5rem;
-  }
-}
-
 @media (max-width: 768px) {
-  .minimap {
-    top: auto;
-    bottom: 12%;
-    left: 5%;
-    right: 5%;
-    transform: none;
-    width: auto;
-    max-width: none;
-    height: 180px;
+  .bannerContainer {
+    height: 70vh;
   }
-  .minimapWrapper {
-    gap: 1.5rem;
+  
+  .bannerTitle {
+    font-size: 3rem;
+    letter-spacing: 2px;
   }
-  .minimapImgPreview {
-    width: 100px;
-    height: 130px;
-  }
-  .minimapItemInfoRow:nth-child(1) p:last-child {
-    font-size: 1.2rem;
-  }
-  .minimapItemInfoRow:nth-child(3) p {
-    display: none;
-  }
-  .sectionLabel {
-    top: 10%;
-  }
-  .scrollHint {
-    display: none;
+  
+  .bannerOverlay {
+    padding: 30px;
   }
 }

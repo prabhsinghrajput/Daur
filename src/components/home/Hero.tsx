@@ -8,9 +8,10 @@ interface HeroProps {
   trackRef: RefObject<HTMLDivElement | null>;
   scrollProgress: number;
   activeProduct?: Product | null;
+  isLoading?: boolean;
 }
 
-export default function Hero({ trackRef, scrollProgress, activeProduct }: HeroProps) {
+export default function Hero({ trackRef, scrollProgress, activeProduct, isLoading = false }: HeroProps) {
   return (
     <section className={styles.heroTrack} ref={trackRef}>
       <div className={styles.heroSticky}>
@@ -31,7 +32,7 @@ export default function Hero({ trackRef, scrollProgress, activeProduct }: HeroPr
         />
 
         {/* 3D DAUR Model Logo */}
-        <Hero3D scrollProgress={scrollProgress} />
+        <Hero3D scrollProgress={scrollProgress} isLoading={isLoading} />
 
       </div>
     </section>

@@ -56,7 +56,7 @@ const WorkoutShowcase = () => {
                 priority
               />
             </motion.div>
-            <h3 className={styles.cardTitle}>Active Tees</h3>
+            <h3 className={styles.cardTitle}>DAUR Active</h3>
             <button className={styles.shopButton}>Shop Now</button>
           </motion.div>
 
@@ -73,7 +73,7 @@ const WorkoutShowcase = () => {
                 className={styles.image}
               />
             </motion.div>
-            <h3 className={styles.cardTitle}>Lab Series</h3>
+            <h3 className={styles.cardTitle}>DAUR Labs</h3>
             <button className={styles.shopButton}>Shop Now</button>
           </motion.div>
 
@@ -90,7 +90,7 @@ const WorkoutShowcase = () => {
                 className={styles.image}
               />
             </motion.div>
-            <h3 className={styles.cardTitle}>Purple Edition</h3>
+            <h3 className={styles.cardTitle}>DAUR Collection</h3>
             <button className={styles.shopButton}>Shop Now</button>
           </motion.div>
         </div>

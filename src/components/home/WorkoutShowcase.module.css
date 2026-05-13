@@ -1,10 +1,11 @@
 .section {
   width: 100%;
-  padding: 2rem 5vw;
+  padding: 5vh 5vw;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  min-height: 100vh;
 }
 
 .container {
