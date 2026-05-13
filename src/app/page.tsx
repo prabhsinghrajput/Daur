@@ -26,12 +26,17 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(!preloaderShown);
   const [showNavbarLogo, setShowNavbarLogo] = useState(preloaderShown);
 
+  const logoArrived = useRef(false);
+
   const handlePreloaderComplete = useCallback(() => {
     setIsLoading(false);
     preloaderShown = true;
+    // Fallback: ensure logo is visible if onComplete fires
+    setShowNavbarLogo(true);
   }, []);
 
   const handleLogoArrived = useCallback(() => {
+    logoArrived.current = true;
     setShowNavbarLogo(true);
   }, []);
 

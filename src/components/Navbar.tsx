@@ -55,7 +55,7 @@ export default function Navbar({ hideLogo = false }: NavbarProps) {
 
   return (
     <>
-      <motion.nav 
+      <motion.nav
         className={styles.nav}
         variants={{
           visible: { y: 0 },
@@ -74,7 +74,7 @@ export default function Navbar({ hideLogo = false }: NavbarProps) {
               <line x1="3" y1="18" x2="21" y2="18" />
             </svg>
           </div>
-          
+
           <div className={styles.desktopLinks}>
             <Link href="/collections" className={styles.navLink}>Collections</Link>
             <Link href="/active" className={styles.navLink}>Active</Link>
@@ -86,9 +86,9 @@ export default function Navbar({ hideLogo = false }: NavbarProps) {
         {/* Center Section - Logo */}
         {!hideLogo && (
           <Link href="/" className={styles.navLogo} onClick={handleLogoClick}>
-            <img 
-              src="/images/hero/logo.png" 
-              alt="DAUR" 
+            <img
+              src="/images/hero/logo.png"
+              alt="DAUR"
               className={styles.logoImg}
             />
           </Link>
@@ -103,7 +103,7 @@ export default function Navbar({ hideLogo = false }: NavbarProps) {
                 <circle cx="12" cy="7" r="4" />
               </svg>
             </div>
-            
+
             <Link href="/wishlist" className={`${styles.bagWrapper} ${styles.desktopOnly}`}>
               <svg className={styles.heartIcon} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
@@ -120,6 +120,13 @@ export default function Navbar({ hideLogo = false }: NavbarProps) {
               {cartCount > 0 && <span className={styles.cartBadge}>{cartCount}</span>}
             </Link>
 
+            <div className={styles.mobileSearchIcon}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.35-4.35" />
+              </svg>
+            </div>
+
             <div className={`${styles.searchBox} ${styles.desktopOnly}`}>
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10.5 10.5L13.5 13.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
@@ -132,7 +139,7 @@ export default function Navbar({ hideLogo = false }: NavbarProps) {
       </motion.nav>
 
       {/* Sidebar Menu */}
-      <motion.div 
+      <motion.div
         className={styles.sidebar}
         initial={{ x: "-100%" }}
         animate={{ x: isSidebarOpen ? 0 : "-100%" }}
@@ -162,7 +169,7 @@ export default function Navbar({ hideLogo = false }: NavbarProps) {
 
       {/* Overlay */}
       {isSidebarOpen && (
-        <motion.div 
+        <motion.div
           className={styles.sidebarOverlay}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -170,10 +177,10 @@ export default function Navbar({ hideLogo = false }: NavbarProps) {
         />
       )}
 
-      <LoginModal 
-        isOpen={isLoginModalOpen} 
-        onClose={() => setIsLoginModalOpen(false)} 
-        onSuccess={() => setIsLoggedIn(true)} 
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}
+        onSuccess={() => setIsLoggedIn(true)}
       />
     </>
   );

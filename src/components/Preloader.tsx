@@ -62,6 +62,8 @@ const Preloader: React.FC<{ onComplete: () => void, onLogoArrived?: () => void }
         setTimeout(() => setPhase('exit'), 3200);
         // Done: remove from DOM
         setTimeout(() => {
+          // Final safety: ensure logo is marked as arrived before finishing
+          onLogoArrived?.();
           onComplete();
           setVisible(false);
         }, 4600);

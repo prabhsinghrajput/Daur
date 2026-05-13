@@ -111,16 +111,16 @@
     grid-template-columns: 1fr;
     gap: 3rem;
   }
-  
+
   .largeImageSection {
     height: 600px;
   }
-  
+
   .descriptionGroup {
     width: 100%;
     margin-left: 0;
   }
-  
+
   .smallImageSection {
     width: 100%;
     max-width: 400px;
@@ -131,16 +131,16 @@
   .container {
     padding: 60px 20px;
   }
-  
+
   .largeImageSection {
     height: 450px;
   }
-  
+
   .headerRow {
     flex-direction: column;
     gap: 1.5rem;
   }
-  
+
   .titleGroup h2 {
     font-size: 2.5rem;
   }
