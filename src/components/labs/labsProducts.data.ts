@@ -32,8 +32,8 @@ export const labsProducts: LabsProduct[] = [
     color: "Shadow Grey",
     isNew: true,
     isBestseller: false,
-    heroImage: "/images/labs/lab1.png",
-    thumbImage: "/images/labs/lab1.png",
+    heroImage: "/images/labs/lab7.png",
+    thumbImage: "/images/labs/lab7.png",
     accentColor: "#4a4a4a"
   },
   {

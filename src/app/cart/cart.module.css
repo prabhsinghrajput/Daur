@@ -239,7 +239,23 @@
   }
 
   .summary {
-    order: -1;
     margin-bottom: 3rem;
+  }
+
+  .summaryBox {
+    position: static;
+  }
+
+  .itemImage {
+    width: 100px;
+    height: 120px;
+  }
+
+  .cartItem {
+    gap: 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
   }
 }

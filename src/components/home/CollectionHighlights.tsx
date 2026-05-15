@@ -9,49 +9,36 @@ export default function CollectionHighlights() {
     <section className={styles.container}>
       <div className={styles.wrapper}>
         {/* Left: Large Image */}
-        <div className={styles.largeImageSection}>
+        <div className={styles.leftImageSection}>
           <img 
-            src="/images/editorial/editorial4.jpg" 
-            alt="New Collection Main" 
+            src="/images/editorial/editorial_left.png" 
+            alt="New Collection Featured" 
             className={styles.largeImage}
           />
         </div>
 
-        {/* Right: Text and Small Image */}
-        <div className={styles.contentSection}>
-          <div className={styles.headerRow}>
-            <div className={styles.titleGroup}>
-              <h2 className={styles.subtitle}>NEW</h2>
-              <h2 className={styles.title}>COLLECTIONS</h2>
-            </div>
-            <Link href="/collections" className={styles.seeMore}>
-              <span>Explore</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
+        {/* Center: Content */}
+        <div className={styles.centerContent}>
+          <div className={styles.textGroup}>
+            <h2 className={styles.title}>NEW</h2>
+            <h2 className={styles.title}>COLLECTION</h2>
+            <p className={styles.description}>
+              What should we know about this product? How is it made, how much does it cost, what color and size is it? Better descriptions result in more sales.
+            </p>
+            <Link href="/collections" className={styles.shopButton}>
+              Shop
             </Link>
           </div>
+        </div>
 
-          <div className={styles.mainContent}>
-            <div className={styles.descriptionGroup}>
-              <p className={styles.description}>
-                A dialogue between form and function. Our latest narrative explores 
-                the intersection of architectural silhouettes and technical resilience.
-              </p>
-              <p className={styles.description}>
-                Crafted for the modern nomad, every piece is a testament to 
-                understated luxury and progressive design.
-              </p>
-            </div>
-            
-            <div className={styles.smallImageSection}>
-              <img 
-                src="/images/editorial/editorial5.jpg" 
-                alt="New Collection Detail" 
-                className={styles.smallImage}
-              />
-            </div>
+        {/* Right: Arched Image */}
+        <div className={styles.rightImageSection}>
+          <div className={styles.archWrapper}>
+            <img 
+              src="/images/editorial/editorial_right_arch.png" 
+              alt="New Collection Secondary" 
+              className={styles.archImage}
+            />
           </div>
         </div>
       </div>

@@ -32,8 +32,8 @@ export const activeProducts: ActiveProduct[] = [
     color: "Onyx Black",
     isNew: true,
     isBestseller: true,
-    heroImage: "/images/active/active1.png",
-    thumbImage: "/images/active/active1.png",
+    heroImage: "/images/active/active7.png",
+    thumbImage: "/images/active/active7.png",
     accentColor: "#1a1a18",
     gsm: 180,
     fit: "Athletic Fit"

@@ -22,10 +22,10 @@ export default function Hero3D({ scrollProgress, isLoading = false }: Hero3DProp
   }, []);
 
   // Responsive parallax values
-  const yOffset = isMobile ? 20 : 100;
-  const scale = 1 + scrollProgress * 0.1;
+  const yOffset = isMobile ? -20 : 100;
+  const scale = (isMobile ? 1.1 : 1) + scrollProgress * 0.1;
   const opacity = 1 - scrollProgress * 1.5;
-  const y = yOffset + (scrollProgress * (isMobile ? 20 : 50));
+  const y = yOffset + (scrollProgress * (isMobile ? 15 : 50));
 
   if (!mounted) return null;
 
@@ -48,7 +48,7 @@ export default function Hero3D({ scrollProgress, isLoading = false }: Hero3DProp
       <AnimatePresence>
         {!isLoading && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: yOffset + 20 }}
+            initial={{ opacity: 0, scale: isMobile ? 0.95 : 0.9, y: yOffset + 20 }}
             animate={{ opacity: 1, scale: 1, y: yOffset }}
             exit={{ opacity: 0, scale: 0.9, y: yOffset + 20 }}
             transition={{
@@ -56,9 +56,9 @@ export default function Hero3D({ scrollProgress, isLoading = false }: Hero3DProp
               ease: [0.16, 1, 0.3, 1]
             }}
             style={{
-              width: isMobile ? "90%" : "100%",
-              maxWidth: isMobile ? "400px" : "1000px",
-              height: isMobile ? "60%" : "100%",
+              width: isMobile ? "100%" : "100%",
+              maxWidth: isMobile ? "320px" : "1000px",
+              height: isMobile ? "50%" : "100%",
               position: "relative",
               scale: scale,
               opacity: opacity,

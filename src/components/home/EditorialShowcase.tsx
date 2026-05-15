@@ -39,6 +39,11 @@ const EditorialShowcase = () => {
     }
   };
 
+  const hoverVariants: Variants = {
+    initial: { opacity: 0 },
+    hover: { opacity: 1, transition: { duration: 0.6, ease: "easeInOut" } }
+  };
+
   return (
     <section className={styles.section}>
       <motion.div 
@@ -69,8 +74,8 @@ const EditorialShowcase = () => {
           {/* Main Feature - Left Column */}
           <motion.div className={styles.mainFeature} variants={itemVariants}>
             <div className={styles.index}>I</div>
-            <motion.div className={styles.mainImageWrapper} whileHover="hover">
-              <motion.div variants={imageHover} className={styles.fullSize}>
+            <motion.div className={styles.mainImageWrapper} initial="initial" whileHover="hover">
+              <div className={styles.imageContainer}>
                 <Image
                   src="/images/editorial/editorial1.jpg"
                   alt="Editorial Feature 1"
@@ -79,7 +84,16 @@ const EditorialShowcase = () => {
                   className={styles.image}
                   priority
                 />
-              </motion.div>
+                <motion.div className={styles.hoverImage} variants={hoverVariants}>
+                  <Image
+                    src="/images/editorial/editorial1_hover.png"
+                    alt="Editorial Feature 1 Hover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className={styles.image}
+                  />
+                </motion.div>
+              </div>
             </motion.div>
             <div className={styles.featureMeta}>
               <h3 className={styles.metaTitle}>THE SILHOUETTE</h3>
@@ -93,8 +107,8 @@ const EditorialShowcase = () => {
               <span className={styles.titleLabel}>NEW SEASON COLLECTION</span>
               <h2 className={styles.titleMain}>ESSENTIALS</h2>
             </div>
-            <motion.div className={styles.centerImageWrapper} whileHover="hover">
-              <motion.div variants={imageHover} className={styles.fullSize}>
+            <motion.div className={styles.centerImageWrapper} initial="initial" whileHover="hover">
+              <div className={styles.imageContainer}>
                 <Image
                   src="/images/editorial/editorial2.jpg"
                   alt="Editorial Feature 2"
@@ -102,7 +116,16 @@ const EditorialShowcase = () => {
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className={styles.image}
                 />
-              </motion.div>
+                <motion.div className={styles.hoverImage} variants={hoverVariants}>
+                  <Image
+                    src="/images/editorial/editorial2_hover.png"
+                    alt="Editorial Feature 2 Hover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className={styles.image}
+                  />
+                </motion.div>
+              </div>
             </motion.div>
           </motion.div>
 
@@ -115,8 +138,8 @@ const EditorialShowcase = () => {
               </div>
             </div>
             
-            <motion.div className={styles.sideImageWrapper} whileHover="hover">
-              <motion.div variants={imageHover} className={styles.fullSize}>
+            <motion.div className={styles.sideImageWrapper} initial="initial" whileHover="hover">
+              <div className={styles.imageContainer}>
                 <Image
                   src="/images/editorial/editorial3.jpg"
                   alt="Editorial Feature 3"
@@ -124,7 +147,16 @@ const EditorialShowcase = () => {
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className={styles.image}
                 />
-              </motion.div>
+                <motion.div className={styles.hoverImage} variants={hoverVariants}>
+                  <Image
+                    src="/images/editorial/editorial3_hover.png"
+                    alt="Editorial Feature 3 Hover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className={styles.image}
+                  />
+                </motion.div>
+              </div>
             </motion.div>
             
           </motion.div>

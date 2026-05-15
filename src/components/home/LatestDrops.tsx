@@ -8,7 +8,7 @@ export default function LatestDrops() {
     <section className={styles.bannerSection}>
       <div className={styles.bannerContainer}>
         <img
-          src="/images/latest-drop/LD1.jpg"
+          src="/images/latest-drop/LD1.png"
           alt="Latest Drop Banner"
           className={styles.bannerImage}
         />

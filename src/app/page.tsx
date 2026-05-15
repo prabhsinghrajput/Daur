@@ -14,7 +14,9 @@ import ProductCatalogueSection from '../components/home/product-catalogue';
 import type { Product } from '../components/home/product-catalogue/products.data';
 import Preloader from '../components/Preloader';
 
+import BenefitsBar from '../components/home/BenefitsBar';
 import CollectionHighlights from '../components/home/CollectionHighlights';
+import Banner from '../components/home/Banner';
 
 // Global variable to track if preloader has already been shown in this session
 let preloaderShown = false;
@@ -70,9 +72,11 @@ export default function Home() {
 
       <Navbar hideLogo={!showNavbarLogo} />
       <Hero trackRef={trackRef} scrollProgress={scrollProgress} activeProduct={activeProduct} isLoading={isLoading} />
+      <BenefitsBar />
       <EditorialShowcase />
       <LatestDrops />
       <CollectionHighlights />
+      <Banner imageSrc="/images/latest-drop/LD2.png" altText="Latest Drop Banner" height="70vh" />
       <WorkoutShowcase />
       <BrandDifference />
       <PinterestGrid />

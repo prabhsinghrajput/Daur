@@ -271,24 +271,68 @@
 }
 
 @media (max-width: 968px) {
-  /* ... existing mobile styles ... */
+  .accountPage {
+    padding: 100px 16px 40px;
+  }
+
+  .mainContainer {
+    flex-direction: column;
+    border-radius: 24px;
+    min-height: auto;
+  }
+
   .sidebar {
     width: 100%;
     border-right: none;
     border-bottom: 1px solid #f0f0f0;
-    padding: 20px;
+    padding: 16px;
     flex-direction: row;
     overflow-x: auto;
     white-space: nowrap;
     scrollbar-width: none;
     gap: 8px;
+    -ms-overflow-style: none;
   }
+
+  .sidebar::-webkit-scrollbar {
+    display: none;
+  }
+
   .sidebarItem {
-    padding: 10px 15px;
+    padding: 10px 16px;
     font-size: 0.85rem;
+    gap: 8px;
+    flex-shrink: 0;
   }
+
+  .sidebarItem:hover {
+    transform: none;
+  }
+
+  .icon {
+    font-size: 1.1rem;
+  }
+
   .contentArea {
-    padding: 30px 20px;
+    padding: 40px 24px;
+  }
+
+  .addressHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .detailsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .detailCard {
+    padding: 20px;
+  }
+
+  .accountForm {
+    max-width: 100%;
   }
 }
 
