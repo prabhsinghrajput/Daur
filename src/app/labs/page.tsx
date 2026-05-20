@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Navbar from '../../components/Navbar';
+import SubNavbar from '../../components/SubNavbar';
 import Runway from '../../components/collections/Runway';
 import ProductSidebar from '../../components/collections/ProductSidebar';
 import collectionsStyles from '../../components/collections/collections.module.css';
@@ -17,6 +18,7 @@ export default function LabsPage() {
   return (
     <main className={collectionsStyles.main}>
       <Navbar />
+      <SubNavbar />
 
       <div className={collectionsStyles.contentWrapper}>
         {/* LEFT PANEL: RUNWAY VIEW */}

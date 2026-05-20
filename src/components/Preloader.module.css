@@ -39,6 +39,17 @@
   -webkit-backface-visibility: hidden;
 }
 
+.clockNeedle {
+  position: absolute;
+  width: 1px;
+  height: 10px; /* Adjust size as needed */
+  background-color: #000000;
+  top: 47%;
+  left: 50%;
+  transform-origin: bottom;
+  will-change: transform;
+}
+
 .ring {
   position: absolute;
   width: 100px;

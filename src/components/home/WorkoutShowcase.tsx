@@ -31,67 +31,45 @@ const WorkoutShowcase = () => {
         viewport={{ once: true, amount: 0.2 }}
         variants={containerVariants}
       >
-        {/* Header Section */}
-        <div className={styles.headerRow}>
-          <div>
-            <span className={styles.categoryLabel}>CATEGORY</span>
-            <h2 className={styles.mainTitle}>Explore Popular Categories</h2>
-          </div>
-          <button className={styles.exploreButton}>Explore All Category</button>
-        </div>
-
-        {/* Image Grid */}
         <div className={styles.grid}>
           {/* Card 1 */}
-          <motion.div className={`${styles.card} ${styles.cardGreen}`} variants={itemVariants}>
-            <div className={styles.bgBox} />
-
-            <motion.div className={styles.imageWrapper}>
+          <motion.div className={styles.card} variants={itemVariants}>
+            <div className={styles.imageWrapper}>
               <Image
-                src="/images/active/active1.png"
-                alt="Active T-Shirt"
+                src="/images/editorial/editorial1.jpg"
+                alt="Editorial Showcase 1"
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
                 className={styles.image}
                 priority
               />
-            </motion.div>
-            <h3 className={styles.cardTitle}>DAUR Active</h3>
-            <button className={styles.shopButton}>Shop Now</button>
+            </div>
           </motion.div>
 
           {/* Card 2 */}
-          <motion.div className={`${styles.card} ${styles.cardGrey}`} variants={itemVariants}>
-            <div className={styles.bgBox} />
-
-            <motion.div className={styles.imageWrapper}>
+          <motion.div className={styles.card} variants={itemVariants}>
+            <div className={styles.imageWrapper}>
               <Image
-                src="/images/labs/lab1.png"
-                alt="Lab Series T-Shirt"
+                src="/images/editorial/editorial2.jpg"
+                alt="Editorial Showcase 2"
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
                 className={styles.image}
               />
-            </motion.div>
-            <h3 className={styles.cardTitle}>DAUR Labs</h3>
-            <button className={styles.shopButton}>Shop Now</button>
+            </div>
           </motion.div>
 
           {/* Card 3 */}
-          <motion.div className={`${styles.card} ${styles.cardPink}`} variants={itemVariants}>
-            <div className={styles.bgBox} />
-
-            <motion.div className={styles.imageWrapper}>
+          <motion.div className={styles.card} variants={itemVariants}>
+            <div className={styles.imageWrapper}>
               <Image
-                src="/images/products/Purple.png"
-                alt="Purple Edition T-Shirt"
+                src="/images/editorial/editorial3.jpg"
+                alt="Editorial Showcase 3"
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
                 className={styles.image}
               />
-            </motion.div>
-            <h3 className={styles.cardTitle}>DAUR Collection</h3>
-            <button className={styles.shopButton}>Shop Now</button>
+            </div>
           </motion.div>
         </div>
       </motion.div>

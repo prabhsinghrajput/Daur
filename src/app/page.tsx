@@ -8,7 +8,7 @@ import LatestDrops from '../components/home/LatestDrops';
 import EditorialShowcase from '../components/home/EditorialShowcase';
 import WorkoutShowcase from '../components/home/WorkoutShowcase';
 import PinterestGrid from '../components/home/PinterestGrid';
-import BrandDifference from '../components/home/BrandDifference';
+import SummerEssentials from '../components/home/SummerEssentials';
 import Footer from '../components/home/Footer';
 import ProductCatalogueSection from '../components/home/product-catalogue';
 import type { Product } from '../components/home/product-catalogue/products.data';
@@ -78,9 +78,9 @@ export default function Home() {
       <CollectionHighlights />
       <Banner imageSrc="/images/latest-drop/LD2.png" altText="Latest Drop Banner" height="70vh" />
       <WorkoutShowcase />
-      <BrandDifference />
+      <SummerEssentials />
       <PinterestGrid />
-      <ProductCatalogueSection onActiveChange={(p) => setActiveProduct(p)} />
+      {/*<ProductCatalogueSection onActiveChange={(p) => setActiveProduct(p)} />*/}
       <Footer />
     </main>
   );
