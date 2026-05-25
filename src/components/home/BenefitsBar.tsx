@@ -29,7 +29,7 @@ const benefits = [
         <path d="M10 12H14" />
       </svg>
     ),
-    title: 'Good Packaging',
+    title: 'Premium Packaging',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
   },
   {
